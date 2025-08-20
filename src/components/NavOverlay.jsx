@@ -1,4 +1,7 @@
+import { Link } from "react-router-dom";
 import useNavOverlayStore from "../stores/NavOverlayStore";
+import Buttons from "./Buttons";
+import { PiSignIn } from "react-icons/pi";
 
 const NavOverlay = () => {
   const isOpen = useNavOverlayStore((s) => s.isOpen);
@@ -9,9 +12,40 @@ const NavOverlay = () => {
       onClick={buttonIsClicked}
       className={`${
         isOpen ? "" : "hidden"
-      } absolute text-primary-headings bg-gray-900/50 left-0 w-full h-svh`}
+      } absolute text-primary-headings bg-stone-900/40 left-0 right-0 top-0 w-full h-svh`}
     >
-      <div className="w-full">Overlay</div>
+      <div className="flex flex-col justify-center items-center gap-4 absolute top-30 right-10 w-2/5 h-[35%] bg-secondary-Background rounded-2xl">
+        <Link to="/home" className="text-primary-headings text-lg">
+          Home
+        </Link>
+        <Link to="/home" className="text-primary-headings text-lg">
+          Features
+        </Link>
+        <Link to="/home" className="text-primary-headings text-lg">
+          Tools
+        </Link>
+        <Link to="/home" className="text-primary-headings text-lg">
+          FAQ
+        </Link>
+        <Buttons
+          variant={[
+            "secondaryVariant",
+            "gap-2 w-3/5 p-2",
+            "Sign in",
+            <PiSignIn />,
+            null,
+          ]}
+        />
+        <Buttons
+          variant={[
+            "mainVariant",
+            "gap-2 w-3/5 p-2",
+            "Get Started",
+            null,
+            null,
+          ]}
+        />
+      </div>
     </div>
   );
 };
