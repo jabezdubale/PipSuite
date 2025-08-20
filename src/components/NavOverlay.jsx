@@ -23,13 +23,13 @@ const NavOverlay = () => {
         <Link to="/home" className="text-primary-headings text-lg">
           Home
         </Link>
-        <Link to="/home" className="text-primary-headings text-lg">
+        <Link to="/features" className="text-primary-headings text-lg">
           Features
         </Link>
-        <Link to="/home" className="text-primary-headings text-lg">
+        <Link to="/tools" className="text-primary-headings text-lg">
           Tools
         </Link>
-        <Link to="/home" className="text-primary-headings text-lg">
+        <Link to="/faq" className="text-primary-headings text-lg">
           FAQ
         </Link>
         <Buttons
