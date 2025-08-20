@@ -14,7 +14,7 @@ const NavOverlay = () => {
         isOpen ? "" : "hidden"
       } absolute text-primary-headings bg-stone-900/40 left-0 right-0 top-0 w-full h-svh`}
     >
-      <div className="flex flex-col justify-center items-center gap-4 absolute top-30 right-10 w-2/5 h-[35%] bg-secondary-Background rounded-2xl">
+      <div className="flex flex-col justify-center items-center gap-4 absolute top-30 right-10 w-2/5 py-8 bg-secondary-Background rounded-2xl">
         <Link to="/home" className="text-primary-headings text-lg">
           Home
         </Link>
