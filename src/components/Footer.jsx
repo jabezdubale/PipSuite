@@ -42,7 +42,7 @@ const Footer = () => {
             “It is not a calculated risk if you haven’t calculated it.” — Naved
             Abdali
           </p>
-          <div className="text-primary-headings flex justify-center items-center">
+          <div className=" text-primary-headings flex justify-center items-center w-[50%] gap-[20%]">
             <BsTwitterX size={24} />
             <AiOutlineYoutube size={24} />
             <BiLogoFacebook size={24} />
