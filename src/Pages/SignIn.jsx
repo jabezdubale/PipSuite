@@ -13,8 +13,8 @@ const SignIn = () => {
     console.log("Login is handled");
   };
   return (
-    <div className="bg-main-Background min-h-[100svh] flex justify-center items-center">
-      <div className="bg-secondary-Background w-4/5 md:w-3/5 max-w-6xl py-15 px-[5%] md:px-[8%] rounded-4xl flex flex-col gap-2">
+    <div className="bg-main-Background min-h-[100svh] flex justify-center items-center py-15">
+      <div className="bg-secondary-Background w-4/5 md:w-3/5 max-w-4xl py-15 px-[5%] md:px-[8%] rounded-4xl flex flex-col gap-2">
         <Logo />
         <form
           onSubmit={handleLogin}
@@ -64,7 +64,7 @@ const SignIn = () => {
         </form>
         <div className="flex flex-col justify-center items-center gap-5">
           <p className="text-primary-headings text-lg">or continue with</p>
-          <div className="w-3/5 flex flex-wrap justify-around items-center">
+          <div className="w-full flex flex-wrap justify-around items-center">
             <Buttons
               variant="mainVariant"
               styles="w-3/10 p-2"
@@ -96,13 +96,13 @@ const SignIn = () => {
         </div>
 
         <div className="flex justify-center items-center">
-          <div className=" w-3/5 flex justify-between gap-2 items-center mt-5">
+          <div className=" w-full flex gap-2 items-center mt-5">
             <p className="text-primary-headings text-lg w-full">
               Don't have an account yet?
             </p>
             <Buttons
               variant="secondaryVariant"
-              styles="max-w-3/5 w-full p-2"
+              styles="max-w-3/5 w-3/4 p-2"
               label="Register"
               LeftIcon={null}
               RightIcon={null}
