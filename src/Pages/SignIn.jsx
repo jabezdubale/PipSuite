@@ -6,8 +6,11 @@ import { FaRegEyeSlash } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { SiTradingview } from "react-icons/si";
+import { useState } from "react";
 
 const SignIn = () => {
+  const [showPass, setShowPass] = useState(false);
+
   const handleLogin = (e) => {
     e.preventDefault();
     console.log("Login is handled");
@@ -26,7 +29,7 @@ const SignIn = () => {
           <div className="bg-white/30 w-full py-1 px-4 rounded-xl text-secondary-headings text-3xl flex justify-start items-center gap-2">
             <MdOutlineEmail />
             <input
-              type="text"
+              type="email"
               placeholder="Email Adress"
               className="text-lg placeholder-secondary-headings w-full outline-none"
             />
@@ -34,11 +37,14 @@ const SignIn = () => {
           <div className="bg-white/30 w-full py-1 px-4 rounded-xl text-secondary-headings text-3xl flex justify-start items-center gap-2">
             <TbLockPassword />
             <input
-              type="text"
+              type={showPass ? "text" : "password"}
               placeholder="Password"
               className=" text-lg placeholder-secondary-headings w-full outline-none"
             />
-            <FaRegEyeSlash className="mr-2 bg-white/2" />
+            <FaRegEyeSlash
+              className="mr-2 bg-white/2 cursor-pointer"
+              onClick={() => setShowPass(!showPass)}
+            />
           </div>
           <div className="w-3/5 flex justify-start items-center gap-2">
             <input
