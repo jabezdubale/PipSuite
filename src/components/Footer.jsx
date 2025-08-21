@@ -8,7 +8,7 @@ const Footer = () => {
     <div className="bg-secondary-Background flex flex-col justify-center items-center gap-14">
       <div className="flex flex-wrap justify-center items-center pt-14 gap-8">
         <div className="flex flex-col justify-center items-center max-w-70 ">
-          <Logo />
+          <Logo size={"h-[55px]"} style="text-2xl" />
           <p className="text-primary-headings text-center">
             All-in-one trading toolkit for smarter forex & crypto decisions.
           </p>

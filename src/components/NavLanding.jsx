@@ -28,16 +28,20 @@ const NavLanding = () => {
       </div>
       <div className="hidden sm:flex sm:flex-col md:flex-row justify-center items-center gap-3 w-full">
         <Buttons
-          variant={[
-            "secondaryVariant",
-            "gap-2 w-30 p-2",
-            "Sign in",
-            <PiSignIn />,
-            null,
-          ]}
+          variant="secondaryVariant"
+          styles="w-30 p-2"
+          label="Sign in"
+          LeftIcon={<PiSignIn />}
+          RightIcon={null}
+          link="signin"
         />
         <Buttons
-          variant={["mainVariant", "gap-2 w-30 p-2", "Get Started", null, null]}
+          variant="mainVariant"
+          styles="w-30 p-2"
+          label="Get Started"
+          LeftIcon={null}
+          RightIcon={null}
+          link="register"
         />
       </div>
       <div

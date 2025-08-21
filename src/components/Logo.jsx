@@ -1,10 +1,10 @@
 import logo from "../assets/images/Logo-alone.png";
 
-const Logo = () => {
+const Logo = ({ size = "h-[48px]", style = "text-lg" }) => {
   return (
-    <div className="flex flex-wrap justify-center gap-4 items-center sm:w-full">
-      <img src={logo} alt="logo" className="h-[48px]" />
-      <p className="text-lg text-primary-headings">PipSuite</p>
+    <div className="flex flex-wrap items-center justify-center gap-4 sm:w-full">
+      <img src={logo} alt="logo" className={`${size}`} />
+      <p className={`${style} text-primary-headings`}>PipSuite</p>
     </div>
   );
 };

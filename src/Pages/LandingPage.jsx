@@ -24,9 +24,12 @@ const LandingPage = () => {
           <NavLanding />
           <hr className="border-t border-main-border mt-6" />
         </nav>
+
+        {/* Mobile Nav Overlay Section */}
         <div onClick={() => buttonIsClicked}>
           <NavOverlay />
         </div>
+
         {/* Hero Section */}
         <div className="col-span-full md:col-start-2 md:col-end-8 lg:col-start-3 flex gap-15 py-15 lg:col-end-11 flex-col justify-center items-center">
           <h1 className="text-primary-headings text-5xl sm:text-6xl text-center ">
@@ -39,22 +42,20 @@ const LandingPage = () => {
           </p>
           <div className="flex justify-center items-center flex-col sm:flex-row gap-6">
             <Buttons
-              variant={[
-                "mainVariant",
-                "styles- gap-2 w-60 p-2",
-                "Get Started Free",
-                <IoPersonAddOutline size={24} />,
-                null,
-              ]}
+              variant="mainVariant"
+              styles="w-60 p-2"
+              label="Get Started Free"
+              LeftIcon={<IoPersonAddOutline size={24} />}
+              RightIcon={null}
+              link="register"
             />
             <Buttons
-              variant={[
-                "secondaryVariant",
-                "styles- gap-2 w-60 p-2",
-                "Watch Demo",
-                null,
-                <MdOutlinePlayCircleOutline size={24} />,
-              ]}
+              variant="secondaryVariant"
+              styles="w-60 p-2"
+              label="Watch Demo"
+              LeftIcon={null}
+              RightIcon={<MdOutlinePlayCircleOutline size={24} />}
+              link="https://www.youtube.com/watch?v=ffQJRqlgf4E&list=RDffQJRqlgf4E&start_radio=1"
             />
           </div>
         </div>
@@ -134,13 +135,12 @@ const LandingPage = () => {
               />
             </div>
             <Buttons
-              variant={[
-                "mainVariant",
-                "gap-2 w-2/3 md:w-2/5 p-2",
-                "Get Started",
-                null,
-                null,
-              ]}
+              variant="mainVariant"
+              styles="w-2/3 md:w-2/5 p-2"
+              label="Get Started"
+              LeftIcon={null}
+              RightIcon={null}
+              link="signin"
             />
           </div>
         </div>

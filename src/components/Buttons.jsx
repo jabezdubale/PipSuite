@@ -1,42 +1,91 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Buttons = ({ variant }) => {
-  if (variant[0] === "mainVariant") {
+const Buttons = ({
+  variant,
+  styles,
+  label,
+  LeftIcon,
+  RightIcon,
+  link,
+  type,
+}) => {
+  if (variant === "mainVariant") {
     return (
-      <div
-        className={`flex justify-center items-center bg-brand-green text-center rounded-xl ${variant[1]}`}
+      <button
+        type={`${type}`}
+        className={`flex justify-center items-center bg-brand-green text-center gap-2 rounded-xl cursor-pointer ${styles}`}
       >
-        {variant[3] && (
-          <div className="text-main-Background text-lg">{variant[3]}</div>
+        {link ? (
+          <Link
+            to={`${link}`}
+            className="flex justify-center items-center text-center w-full gap-2"
+          >
+            {LeftIcon && (
+              <div className="text-main-Background text-lg">{LeftIcon}</div>
+            )}
+            {label && (
+              <div className="text-main-Background text-lg">{label}</div>
+            )}
+            {RightIcon && (
+              <div className="text-main-Background text-lg">{RightIcon}</div>
+            )}
+          </Link>
+        ) : (
+          <div>
+            {LeftIcon && (
+              <div className="text-main-Background text-lg">{LeftIcon}</div>
+            )}
+            {label && (
+              <div className="text-main-Background text-lg">{label}</div>
+            )}
+            {RightIcon && (
+              <div className="text-main-Background text-lg">{RightIcon}</div>
+            )}
+          </div>
         )}
-        {variant[2] && (
-          <div className="text-main-Background text-lg">{variant[2]}</div>
-        )}
-        {variant[4] && (
-          <div className="text-main-Background text-lg">{variant[4]}</div>
-        )}
-      </div>
+      </button>
     );
-  } else if (variant[0] === "secondaryVariant") {
+  } else if (variant === "secondaryVariant") {
     return (
-      <div
-        className={`flex justify-center items-center border-1 border-solid border-main-border text-center rounded-xl ${variant[1]}`}
+      <button
+        type={`${type}`}
+        className={`flex justify-center items-center border-1 border-solid border-main-border text-center rounded-xl ${styles}`}
       >
-        {variant[3] && (
-          <div className="text-primary-headings text-lg">{variant[3]}</div>
+        {link ? (
+          <Link
+            to={`${link}`}
+            className="flex justify-center items-center text-center gap-2"
+          >
+            {LeftIcon && (
+              <div className="text-primary-headings text-lg">{LeftIcon}</div>
+            )}
+            {label && (
+              <div className="text-primary-headings text-lg">{label}</div>
+            )}
+            {RightIcon && (
+              <div className="text-primary-headings text-lg">{RightIcon}</div>
+            )}
+          </Link>
+        ) : (
+          <div>
+            {LeftIcon && (
+              <div className="text-primary-headings text-lg">{LeftIcon}</div>
+            )}
+            {label && (
+              <div className="text-primary-headings text-lg">{label}</div>
+            )}
+            {RightIcon && (
+              <div className="text-primary-headings text-lg">{RightIcon}</div>
+            )}
+          </div>
         )}
-        {variant[2] && (
-          <div className="text-primary-headings text-lg">{variant[2]}</div>
-        )}
-        {variant[4] && (
-          <div className="text-primary-headings text-lg">{variant[4]}</div>
-        )}
-      </div>
+      </button>
     );
   }
 };
 
 export default Buttons;
 {
-  /* <Buttons variant={["mainVariant/secondaryVariant", "styles- gap-2 w-42 p-2", "Text", "leftIcon- <FaRegCircle />", "RightIcon- <FaRegCircle />"]} /> */
+  /* <Buttons variant="mainVariant/secondaryVariant" styles="" label="" LeftIcon={} RightIcon={} link="" /> */
 }

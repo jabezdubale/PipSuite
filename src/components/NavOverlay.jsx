@@ -13,12 +13,12 @@ const NavOverlay = () => {
         onClick={buttonIsClicked}
         className={`${
           isOpen ? "" : "hidden"
-        } fixed text-primary-headings bg-stone-900/40 left-0 right-0 top-0 w-full h-full`}
+        } fixed text-primary-headings bg-stone-900/40 w-full inset-0`}
       ></div>
       <div
         className={`${
           isOpen ? "" : "hidden"
-        } flex flex-col justify-center items-center gap-4 absolute top-30 right-10 w-4/5 py-8 bg-secondary-Background rounded-2xl`}
+        } sm:${buttonIsClicked} flex flex-col justify-center items-center gap-4 absolute top-30 right-10 w-4/5 py-8 bg-secondary-Background rounded-2xl`}
       >
         <Link to="/home" className="text-primary-headings text-lg">
           Home
@@ -32,23 +32,22 @@ const NavOverlay = () => {
         <Link to="/faq" className="text-primary-headings text-lg">
           FAQ
         </Link>
+
         <Buttons
-          variant={[
-            "secondaryVariant",
-            "gap-2 w-3/5 p-2",
-            "Sign in",
-            <PiSignIn />,
-            null,
-          ]}
+          variant="secondaryVariant"
+          styles="w-3/5 p-2"
+          label="Sign in"
+          LeftIcon={<PiSignIn />}
+          RightIcon={null}
+          link="signin"
         />
         <Buttons
-          variant={[
-            "mainVariant",
-            "gap-2 w-3/5 p-2",
-            "Get Started",
-            null,
-            null,
-          ]}
+          variant="mainVariant"
+          styles="w-3/5 p-2"
+          label="Get Started"
+          LeftIcon={null}
+          RightIcon={null}
+          link="register"
         />
       </div>
     </div>
