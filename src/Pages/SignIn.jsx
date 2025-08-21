@@ -14,33 +14,29 @@ const SignIn = () => {
   };
   return (
     <div className="bg-main-Background min-h-[100svh] flex justify-center items-center">
-      <div className="bg-secondary-Background w-4/5 md:w-3/5 max-w-6xl py-10 rounded-4xl flex flex-col gap-2">
+      <div className="bg-secondary-Background w-4/5 md:w-3/5 max-w-6xl py-15 px-[5%] md:px-[8%] rounded-4xl flex flex-col gap-2">
         <Logo />
-        <p className="text-secondary-headings text-xl py-5 mx-auto text-center w-4/5 lg:w-3/5">
-          “It is not a calculated risk if you haven’t calculated it.” — Naved
-          Abdali
-        </p>
         <form
           onSubmit={handleLogin}
-          className="flex flex-col justify-center items-center gap-4"
+          className="flex flex-col justify-center items-start gap-4"
         >
           <h1 className="text-primary-headings text-2xl md:text-3xl font-bold text-center">
-            Log in
+            Welcome Back
           </h1>
-          <div className="bg-white/30 w-3/5 p-2 rounded-xl text-secondary-headings text-3xl flex justify-start items-center gap-2">
+          <div className="bg-white/30 w-full py-1 px-4 rounded-xl text-secondary-headings text-3xl flex justify-start items-center gap-2">
             <MdOutlineEmail />
             <input
               type="text"
               placeholder="Email Adress"
-              className="text-xl placeholder-secondary-headings w-full outline-none"
+              className="text-lg placeholder-secondary-headings w-full outline-none"
             />
           </div>
-          <div className="bg-white/30 w-3/5 p-2 rounded-xl text-secondary-headings text-3xl flex justify-start items-center gap-2">
+          <div className="bg-white/30 w-full py-1 px-4 rounded-xl text-secondary-headings text-3xl flex justify-start items-center gap-2">
             <TbLockPassword />
             <input
               type="text"
               placeholder="Password"
-              className=" text-xl placeholder-secondary-headings w-full outline-none"
+              className=" text-lg placeholder-secondary-headings w-full outline-none"
             />
             <FaRegEyeSlash className="mr-2 bg-white/2" />
           </div>
@@ -51,10 +47,10 @@ const SignIn = () => {
             />
             <p className="text-primary-headings text-lg ">Remember me</p>
           </div>
-          <div className="w-3/5 flex flex-col justify-center items-center gap-3">
+          <div className="w-full flex flex-col justify-center items-center gap-3">
             <Buttons
               variant="mainVariant"
-              styles="w-full p-2"
+              styles="w-full p-1"
               label="Sign in"
               LeftIcon={null}
               RightIcon={null}
@@ -71,7 +67,7 @@ const SignIn = () => {
           <div className="w-3/5 flex flex-wrap justify-around items-center">
             <Buttons
               variant="mainVariant"
-              styles="w-3/10 p-3"
+              styles="w-3/10 p-2"
               label=""
               LeftIcon={<FaGoogle size={25} />}
               RightIcon={null}
@@ -80,7 +76,7 @@ const SignIn = () => {
             />
             <Buttons
               variant="mainVariant"
-              styles="w-3/10 p-3"
+              styles="w-3/10 p-2"
               label=""
               LeftIcon={<FaFacebookF size={25} />}
               RightIcon={null}
@@ -89,7 +85,7 @@ const SignIn = () => {
             />
             <Buttons
               variant="mainVariant"
-              styles="w-3/10 p-3"
+              styles="w-3/10 p-2"
               label=""
               LeftIcon={<SiTradingview size={25} />}
               RightIcon={null}
@@ -101,13 +97,13 @@ const SignIn = () => {
 
         <div className="flex justify-center items-center">
           <div className=" w-3/5 flex justify-between gap-2 items-center mt-5">
-            <p className="text-primary-headings text-lg">
+            <p className="text-primary-headings text-lg w-full">
               Don't have an account yet?
             </p>
             <Buttons
               variant="secondaryVariant"
-              styles="max-w-3/5 w-full p-1"
-              label="Register For free"
+              styles="max-w-3/5 w-full p-2"
+              label="Register"
               LeftIcon={null}
               RightIcon={null}
               link="/register"
