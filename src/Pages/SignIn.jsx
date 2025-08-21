@@ -13,8 +13,8 @@ const SignIn = () => {
     console.log("Login is handled");
   };
   return (
-    <div className="bg-main-Background min-h-[100svh] flex justify-center items-center py-15">
-      <div className="bg-secondary-Background w-4/5 md:w-3/5 max-w-4xl py-15 px-[5%] md:px-[8%] rounded-4xl flex flex-col gap-2">
+    <div className="bg-main-Background min-h-[100svh] flex justify-center items-center py-10">
+      <div className="bg-secondary-Background w-4/5 md:w-3/5 max-w-4xl py-10 px-[5%] md:px-[8%] rounded-4xl flex flex-col gap-2">
         <Logo />
         <form
           onSubmit={handleLogin}
