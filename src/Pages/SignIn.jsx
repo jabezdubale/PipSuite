@@ -7,16 +7,19 @@ import { FaGoogle } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { SiTradingview } from "react-icons/si";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const [showPass, setShowPass] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
     console.log(email);
     console.log(password);
+    navigate("/dashboard");
   };
   return (
     <div className="bg-main-Background min-h-[100svh] flex justify-center items-center py-10">

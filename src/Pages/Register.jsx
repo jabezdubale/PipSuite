@@ -23,7 +23,7 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
       console.log(fullName);
@@ -42,7 +42,7 @@ const Register = () => {
       <div className="bg-secondary-Background w-4/5 md:w-3/5 max-w-4xl py-10 px-[5%] md:px-[8%] rounded-4xl flex flex-col gap-2">
         <Logo />
         <form
-          onSubmit={handleLogin}
+          onSubmit={handleRegister}
           className="flex flex-col justify-center items-start gap-4"
         >
           <h1 className="text-primary-headings text-2xl md:text-3xl font-bold text-center">
@@ -149,11 +149,11 @@ const Register = () => {
         </form>
         <div className="flex flex-col justify-center items-center gap-5">
           <div className="flex justify-center items-center w-full">
-            <hr className="border-t border-brand-green w-full" />
-            <p className="text-primary-headings text-lg w-full text-center">
+            <hr className="border-t border-brand-green w-1/3" />
+            <p className="text-primary-headings text-lg w-1/3 text-center">
               continue with
             </p>
-            <hr className="border-t border-brand-green w-full" />
+            <hr className="border-t border-brand-green w-1/3" />
           </div>
           <div className="w-full flex flex-wrap justify-around items-center">
             <Buttons
