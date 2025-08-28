@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import useNavOverlayStore from "../stores/NavOverlayStore";
-import Buttons from "./Buttons";
+import useNavOverlayStore from "../../stores/NavOverlayStore";
+import Buttons from "../Buttons";
 import { PiSignIn } from "react-icons/pi";
 import { MdMenu } from "react-icons/md";
 import { MdOutlineClose } from "react-icons/md";
-import Logo from "./Logo";
+import Logo from "../Logo";
 
 const NavLanding = () => {
   const buttonIsClicked = useNavOverlayStore((s) => s.buttonIsClicked);
@@ -13,7 +13,7 @@ const NavLanding = () => {
     <div className="flex justify-between items-center">
       <Logo />
       <div className="hidden sm:flex justify-between items-center w-full gap-4 mx-4">
-        <Link to="/home" className="text-primary-headings text-lg w-full">
+        <Link to="/" className="text-primary-headings text-lg w-full">
           Home
         </Link>
         <Link to="/features" className="text-primary-headings text-lg w-full">

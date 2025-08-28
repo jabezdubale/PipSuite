@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import useNavOverlayStore from "../stores/NavOverlayStore";
-import Buttons from "./Buttons";
+import useNavOverlayStore from "../../stores/NavOverlayStore";
+import Buttons from "../Buttons";
 import { PiSignIn } from "react-icons/pi";
 
 const NavOverlay = () => {
@@ -20,7 +20,7 @@ const NavOverlay = () => {
           isOpen ? "" : "hidden"
         } sm:${buttonIsClicked} flex flex-col justify-center items-center gap-4 absolute top-30 right-10 w-4/5 py-8 bg-secondary-Background rounded-2xl`}
       >
-        <Link to="/home" className="text-primary-headings text-lg">
+        <Link to="/" className="text-primary-headings text-lg">
           Home
         </Link>
         <Link to="/features" className="text-primary-headings text-lg">

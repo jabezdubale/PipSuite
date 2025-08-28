@@ -1,19 +1,42 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import LandingPage from "./Pages/LandingPage";
 import SignIn from "./Pages/SignIn";
 import Register from "./Pages/Register";
 import Dashboard from "./Pages/Dashboard";
+import HydrationGate from "./routes/HydrationGate";
+import { RequireAuth, RedirectIfAuthed } from "./routes/guards";
 
 function App() {
   return (
-    <div>
+    <HydrationGate fallback={<div>Loading...</div>}>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/signin"
+          element={
+            <RedirectIfAuthed>
+              <SignIn />
+            </RedirectIfAuthed>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <RedirectIfAuthed>
+              <Register />
+            </RedirectIfAuthed>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard />
+            </RequireAuth>
+          }
+        />
       </Routes>
-    </div>
+    </HydrationGate>
   );
 }
 

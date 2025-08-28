@@ -1,19 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { apiGet, apiPost } from "../lib/api";
+import useAuth from "../stores/auth";
+import { Link, useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-  const [user, setUser] = useState("");
-  const [err, setErr] = useState(null);
+  const loggedInUser = useAuth((state) => state.user);
+  const logOutUser = useAuth((state) => state.logOut);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    apiGet("/Users/1")
-      .then((u) => setUser(u))
-      .catch((e) => setErr(e));
-  }, []);
+  if (!loggedInUser)
+    return <div>Sorry You are not signed in. Please Sign in</div>;
 
-  if (err) return <div>Failed to load: {err.message}</div>;
-  if (!user) return <div>Loading...</div>;
-  return <div>{user.name}</div>;
+  const handleLogout = () => {
+    logOutUser();
+    navigate("/", { replace: true });
+  };
+  return (
+    <div>
+      {loggedInUser.name}
+      <button onClick={handleLogout}>Logout</button>
+    </div>
+  );
 };
 
 export default Dashboard;

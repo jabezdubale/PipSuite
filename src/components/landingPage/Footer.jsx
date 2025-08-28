@@ -1,4 +1,4 @@
-import Logo from "./Logo";
+import Logo from "../Logo";
 import { BsTwitterX } from "react-icons/bs";
 import { AiOutlineYoutube } from "react-icons/ai";
 import { BiLogoFacebook } from "react-icons/bi";

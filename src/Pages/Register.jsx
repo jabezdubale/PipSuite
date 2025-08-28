@@ -10,10 +10,13 @@ import { SiTradingview } from "react-icons/si";
 import { IoPersonOutline } from "react-icons/io5";
 import { RiFileUserLine } from "react-icons/ri";
 import { CiCalendarDate } from "react-icons/ci";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { apiGet, apiPost } from "../lib/api";
+import useAuth from "../stores/auth";
 
 const Register = () => {
+  const [usersData, setUsersData] = useState([]);
   const [showPass, setShowPass] = useState(false);
   const [showCPass, setShowCPass] = useState(false);
   const [fullName, setFullName] = useState("");
@@ -22,26 +25,78 @@ const Register = () => {
   const [dob, setDob] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [checkTerms, setCheckTerms] = useState(false);
+  const age = new Date().getFullYear() - new Date(dob).getFullYear();
+
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const setLoggedInUser = useAuth((state) => state.setUser);
+
+  useEffect(() => {
+    apiGet("Users").then((users) => setUsersData(users));
+  }, []);
+
+  const handleRegister = async (e) => {
     e.preventDefault();
-    if (password === confirmPassword) {
-      console.log(fullName);
-      console.log(userName);
-      console.log(email);
-      console.log(dob);
-      console.log(password);
-      navigate("/dashboard");
-    } else {
-      alert("The passwords do not match");
+    const errors = [];
+    if (fullName.trim().length <= 3) {
+      errors.push("Full Name should have atleast 4 or more characters");
+    }
+
+    if (userName.trim().length <= 3) {
+      errors.push("User Name should have atleast 4 or more characters");
+    }
+
+    if (age < 13) {
+      errors.push("User should be atleast 13 Years old");
+    }
+
+    if (password !== confirmPassword) {
+      errors.push("The passwords do not match");
+    }
+
+    if (!checkTerms) {
+      errors.push(
+        "You need to accept our Terms and Conditions to use PipSuite"
+      );
+    }
+
+    const userExists = usersData.find((userData) => userData.email === email);
+
+    if (errors.length > 0) {
+      errors.forEach((error) => alert(error));
+      return;
+    }
+
+    if (userExists) {
+      alert("You are already a registered user. Please Sign in");
+      navigate("/signin", { replace: true });
+      return;
+    }
+
+    const registeringUser = {
+      name: fullName,
+      userName,
+      email,
+      DOB: dob,
+      password,
+    };
+
+    try {
+      const created = await apiPost("Users", registeringUser);
+      setLoggedInUser(created ?? registeringUser);
+      navigate("/dashboard", { replace: true });
+    } catch (err) {
+      alert(`Registeration failed: ${err.message}`);
     }
   };
 
   return (
     <div className="bg-main-Background min-h-[100svh] flex justify-center items-center py-10">
       <div className="bg-secondary-Background w-4/5 md:w-3/5 max-w-4xl py-10 px-[5%] md:px-[8%] rounded-4xl flex flex-col gap-2">
-        <Logo />
+        <Link to={"/"}>
+          <Logo />
+        </Link>
         <form
           onSubmit={handleRegister}
           className="flex flex-col justify-center items-start gap-4"
@@ -91,7 +146,7 @@ const Register = () => {
               onChange={(e) => setDob(e.target.value)}
               required
               placeholder="Date of Birth"
-              className="text-lg placeholder-secondary-headings w-full outline-none [&::-webkit-calendar-picker-indicator]:cursor-pointer [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:bg-red-500 [&::-webkit-calendar-picker-indicator]:right-0 "
+              className="text-lg placeholder-secondary-headings w-full outline-none [&::-webkit-calendar-picker-indicator]:cursor-pointer [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-[60%] [&::-webkit-calendar-picker-indicator]:bg-red-500 [&::-webkit-calendar-picker-indicator]:right-0 "
             />
           </div>
           <div className="bg-white/30 w-full py-1 px-4 rounded-xl text-secondary-headings text-3xl flex justify-start items-center gap-2">
@@ -127,6 +182,8 @@ const Register = () => {
           <div className="w-full flex justify-start items-center gap-2 mb-5 mt-2">
             <input
               type="checkbox"
+              value={checkTerms}
+              onChange={(e) => setCheckTerms(!checkTerms)}
               className="h-5 w-5 accent-brand-green cursor-pointer"
             />
             <p className="text-primary-headings text-lg ">

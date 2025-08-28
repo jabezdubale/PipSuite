@@ -1,16 +1,44 @@
 {
   "Users": [
     {
-      "id": "1",
+      "id": "deda",
       "name": "Yabetse Dubale",
-      "UserName": "Jabez",
-      "Password": "12345"
+      "userName": "jaman",
+      "email": "Jabez@gmail.com",
+      "DOB": "1994-11-11",
+      "password": "htrhjksdf16546"
     },
     {
-      "id": "038b",
+      "id": "65bd",
+      "name": "Lemmi Beshada",
+      "userName": "lemmisho",
+      "email": "beshadal6@gmail.com",
+      "DOB": "1995-06-06",
+      "password": "herpassword"
+    },
+    {
+      "id": "e075",
+      "name": "Firomsa Kebede",
+      "userName": "Firo",
+      "email": "firo@gmail.com",
+      "DOB": "1994-11-11",
+      "password": "kjdgnfiubvbuhj"
+    },
+    {
+      "id": "6c0d",
+      "name": "Kibrom",
+      "userName": "kibrom",
+      "email": "kibrom@gmail.com",
+      "DOB": "1994-11-11",
+      "password": "dashboard"
+    },
+    {
+      "id": "0c58",
       "name": "Jaman",
-      "UserName": "the New Name",
-      "Password": "new Password"
+      "userName": "jaman",
+      "email": "jaman@gmail.com",
+      "DOB": "1994-08-13",
+      "password": "dashboard"
     }
   ],
   "Trades": [

@@ -1,7 +1,7 @@
 import Buttons from "../components/Buttons";
-import Feature from "../components/Feature";
-import NavLanding from "../components/NavLanding";
-import CTAItems from "../components/CTAItems";
+import Feature from "../components/landingPage/Feature";
+import NavLanding from "../components/landingPage/NavLanding";
+import CTAItems from "../components/landingPage/CTAItems";
 import useNavOverlayStore from "../stores/NavOverlayStore";
 
 import { IoPersonAddOutline } from "react-icons/io5";
@@ -9,9 +9,9 @@ import { MdOutlinePlayCircleOutline } from "react-icons/md";
 import { CgCalculator } from "react-icons/cg";
 import { TbChartHistogram } from "react-icons/tb";
 import { IoIosJournal } from "react-icons/io";
-import FAQ from "../components/FAQ";
-import Footer from "../components/Footer";
-import NavOverlay from "../components/NavOverlay";
+import FAQ from "../components/landingPage/FAQ";
+import Footer from "../components/landingPage/Footer";
+import NavOverlay from "../components/landingPage/NavOverlay";
 
 const LandingPage = () => {
   const buttonIsClicked = useNavOverlayStore((s) => s.buttonIsClicked);
