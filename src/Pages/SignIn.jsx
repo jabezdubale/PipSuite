@@ -7,20 +7,44 @@ import { FaRegEyeSlash } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { SiTradingview } from "react-icons/si";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../stores/auth";
+import { apiGet } from "../lib/api";
 
 const SignIn = () => {
   const [showPass, setShowPass] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const setLoggedInUser = useAuth((state) => state.setUser);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log(email);
-    console.log(password);
-    navigate("/dashboard");
+    try {
+      const allUsers = await apiGet("Users");
+      const signinguser = allUsers.find(
+        (users) => users.email === email.trim().toLowerCase()
+      );
+
+      if (!signinguser) {
+        alert(
+          "Your email address is not registered in our system. Please Register first"
+        );
+        navigate("/register", { replace: true });
+        return;
+      }
+
+      if (signinguser.password !== password) {
+        alert("The password you entered is incorrect. Please try again");
+        return;
+      }
+
+      setLoggedInUser(signinguser);
+      navigate("/dashboard", { replace: true });
+    } catch (err) {
+      alert(`Log in failed: ${err.message}`);
+    }
   };
   return (
     <div className="bg-main-Background min-h-[100svh] flex justify-center items-center py-10">
@@ -50,6 +74,7 @@ const SignIn = () => {
             <TbLockPassword />
             <input
               type={showPass ? "text" : "password"}
+              required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"

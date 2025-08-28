@@ -75,9 +75,9 @@ const Register = () => {
     }
 
     const registeringUser = {
-      name: fullName,
-      userName,
-      email,
+      name: fullName.trim(),
+      userName: userName.trim(),
+      email: email.trim().toLowerCase(),
       DOB: dob,
       password,
     };
