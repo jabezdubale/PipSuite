@@ -1,5 +1,6 @@
 import Logo from "../components/Logo";
 import Buttons from "../components/Buttons";
+import ButtonsSubmit from "../components/ButtonsSubmit";
 import { MdOutlineEmail } from "react-icons/md";
 import { TbLockPassword } from "react-icons/tb";
 import { FaRegEyeSlash } from "react-icons/fa";
@@ -7,7 +8,7 @@ import { FaGoogle } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { SiTradingview } from "react-icons/si";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const [showPass, setShowPass] = useState(false);
@@ -65,13 +66,12 @@ const SignIn = () => {
             <p className="text-primary-headings text-lg ">Remember me</p>
           </div>
           <div className="w-full flex flex-col justify-center items-center gap-3">
-            <Buttons
+            <ButtonsSubmit
               variant="mainVariant"
               styles="w-full p-1"
               label="Sign in"
               LeftIcon={null}
               RightIcon={null}
-              link=""
               type="submit"
             />
             <p className="text-primary-headings text-lg ml-auto pr-5 cursor-pointer">
@@ -95,7 +95,6 @@ const SignIn = () => {
               LeftIcon={<FaGoogle size={25} />}
               RightIcon={null}
               link="https://www.google.com/"
-              type=""
             />
             <Buttons
               variant="mainVariant"
@@ -104,7 +103,6 @@ const SignIn = () => {
               LeftIcon={<FaFacebookF size={25} />}
               RightIcon={null}
               link="https://www.google.com/"
-              type=""
             />
             <Buttons
               variant="mainVariant"
@@ -113,7 +111,6 @@ const SignIn = () => {
               LeftIcon={<SiTradingview size={25} />}
               RightIcon={null}
               link="https://www.google.com/"
-              type=""
             />
           </div>
         </div>
@@ -130,7 +127,6 @@ const SignIn = () => {
               LeftIcon={null}
               RightIcon={null}
               link="/register"
-              type=""
             />
           </div>
         </div>

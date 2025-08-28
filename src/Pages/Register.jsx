@@ -1,5 +1,6 @@
 import Logo from "../components/Logo";
 import Buttons from "../components/Buttons";
+import ButtonsSubmit from "../components/ButtonsSubmit";
 import { MdOutlineEmail } from "react-icons/md";
 import { TbLockPassword } from "react-icons/tb";
 import { FaRegEyeSlash } from "react-icons/fa";
@@ -136,13 +137,12 @@ const Register = () => {
             </p>
           </div>
           <div className="w-full flex flex-col justify-center items-center gap-3">
-            <Buttons
+            <ButtonsSubmit
               variant="mainVariant"
               styles="w-full p-1"
               label="Register"
               LeftIcon={null}
               RightIcon={null}
-              link=""
               type="submit"
             />
           </div>
@@ -163,7 +163,6 @@ const Register = () => {
               LeftIcon={<FaGoogle size={25} />}
               RightIcon={null}
               link="https://www.google.com/"
-              type=""
             />
             <Buttons
               variant="mainVariant"
@@ -172,7 +171,6 @@ const Register = () => {
               LeftIcon={<FaFacebookF size={25} />}
               RightIcon={null}
               link="https://www.google.com/"
-              type=""
             />
             <Buttons
               variant="mainVariant"
@@ -181,7 +179,6 @@ const Register = () => {
               LeftIcon={<SiTradingview size={25} />}
               RightIcon={null}
               link="https://www.google.com/"
-              type=""
             />
           </div>
         </div>
@@ -198,7 +195,6 @@ const Register = () => {
               LeftIcon={null}
               RightIcon={null}
               link="/signin"
-              type=""
             />
           </div>
         </div>
