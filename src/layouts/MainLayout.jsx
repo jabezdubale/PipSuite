@@ -4,8 +4,15 @@ import Navbar from "../components/Navbar";
 import SidebarOverlay from "../components/SidebarOverlay";
 import SmallSidebar from "../components/SmallSidebar";
 import useSidebarOpener from "../stores/SidebarOpener";
+import useMainNavOverlay from "../stores/MainNavOverlay";
 
 const MainLayout = ({ children }) => {
+  const setAmountOverlayOpenFalse = useMainNavOverlay(
+    (state) => state.setAmountOverlayOpenFalse
+  );
+  const setProfileOverlayOpenFalse = useMainNavOverlay(
+    (state) => state.setProfileOverlayOpenFalse
+  );
   const largeSidebarOpen = useSidebarOpener((state) => state.largeSidebarOpen);
   const overlaySidebarOpen = useSidebarOpener(
     (state) => state.overlaySidebarOpen
@@ -15,7 +22,13 @@ const MainLayout = ({ children }) => {
   );
   return (
     <>
-      <div className="bg-main-Background h-[100dvh] flex flex-col">
+      <div
+        onClick={() => {
+          setAmountOverlayOpenFalse();
+          setProfileOverlayOpenFalse();
+        }}
+        className="bg-main-Background h-[100dvh] flex flex-col"
+      >
         <div className="shrink-0 border border-b-main-border py-[2dvh] my-[1dvh]">
           <Navbar />
         </div>
@@ -24,7 +37,7 @@ const MainLayout = ({ children }) => {
           <div
             className={`${
               overlaySidebarOpen ? "" : "hidden"
-            } absolute w-[100dvw] h-full bg-white/1`}
+            } absolute w-[100dvw] z-100 h-full bg-main-Background/70`}
             onClick={(e) => {
               if (e.target === e.currentTarget) setOverlaySidebarOpen();
             }}

@@ -76,10 +76,15 @@ const Register = () => {
 
     const registeringUser = {
       name: fullName.trim(),
-      userName: userName.trim(),
+      username: userName.trim(),
       email: email.trim().toLowerCase(),
-      DOB: dob,
+      dob: dob,
       password,
+      availableMoney: 0,
+      winRate: 0,
+      averageRR: 0,
+      winStreak: 0,
+      strategyIds: [],
     };
 
     try {

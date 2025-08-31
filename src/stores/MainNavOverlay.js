@@ -8,7 +8,7 @@ const useMainNavOverlay = create((set) => ({
   setAmountOverlayOpenFalse: () => set(() => ({ amountOverlayOpen: false })),
   setProfileOverlayOpen: () =>
     set((state) => ({ profileOverlayOpen: !state.profileOverlayOpen })),
-  setProfileOverlayOpenFalse: () => set(() => ({ amountOverlayOpen: false })),
+  setProfileOverlayOpenFalse: () => set(() => ({ profileOverlayOpen: false })),
 }));
 
 export default useMainNavOverlay;

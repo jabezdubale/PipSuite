@@ -12,6 +12,12 @@ const useSidebarOpener = create(
       setOverlaySidebarOpen: () =>
         set((s) => ({ overlaySidebarOpen: !s.overlaySidebarOpen })),
       setSelectedSidebar: (value) => set({ selectedSidebar: value }),
+      resetAllOverlay: () =>
+        set({
+          largeSidebarOpen: false,
+          overlaySidebarOpen: false,
+          selectedSidebar: "dashboard",
+        }),
     }),
     {
       name: "pipsuite-sidebar",

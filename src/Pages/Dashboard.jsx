@@ -6,9 +6,6 @@ const Dashboard = () => {
       <MainLayout>
         <div className="text-primary-headings min-h-full m-5">
           <p className="">This is a Dashboard</p>
-          <p className="">This is a Dashboard</p>
-          <p className="">This is a Dashboard</p>
-          <p className="">This is a Dashboard</p>
         </div>
       </MainLayout>
     </div>

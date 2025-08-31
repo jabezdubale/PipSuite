@@ -9,8 +9,11 @@ import { PiToolboxBold } from "react-icons/pi";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoIosAdd } from "react-icons/io";
 import { PiSignOutBold } from "react-icons/pi";
+import useAuth from "../stores/auth";
 
 const SmallSidebar = ({ styles }) => {
+  const logOut = useAuth((state) => state.logOut);
+  const resetAllOverlay = useSidebarOpener((state) => state.resetAllOverlay);
   const setLargeSidebarOpen = useSidebarOpener(
     (state) => state.setLargeSidebarOpen
   );
@@ -100,7 +103,13 @@ const SmallSidebar = ({ styles }) => {
             <IoIosAdd size={20} />
           </div>
         </div>
-        <div className="w-[95%] flex justify-center items-center gap-2 border border-main-border rounded-lg p-2">
+        <div
+          onClick={() => {
+            logOut();
+            resetAllOverlay();
+          }}
+          className="w-[95%] flex justify-center items-center gap-2 border border-main-border rounded-lg p-2"
+        >
           <PiSignOutBold size={20} />
         </div>
       </div>
