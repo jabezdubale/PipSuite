@@ -5,6 +5,12 @@ import Register from "./Pages/Register";
 import Dashboard from "./Pages/Dashboard";
 import HydrationGate from "./routes/HydrationGate";
 import { RequireAuth, RedirectIfAuthed } from "./routes/guards";
+import MainLayout from "./layouts/MainLayout";
+import TradeJournal from "./Pages/TradeJournal";
+import RiskCalculator from "./Pages/RiskCalculator";
+import BackTester from "./Pages/BackTester";
+import MoreTools from "./Pages/MoreTools";
+import Settings from "./Pages/Settings";
 
 function App() {
   return (
@@ -35,6 +41,48 @@ function App() {
             </RequireAuth>
           }
         />
+        <Route
+          path="/trade-journal"
+          element={
+            <RequireAuth>
+              <TradeJournal />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/risk-calculator"
+          element={
+            <RequireAuth>
+              <RiskCalculator />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/back-tester"
+          element={
+            <RequireAuth>
+              <BackTester />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/more-tools"
+          element={
+            <RequireAuth>
+              <MoreTools />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <RequireAuth>
+              <Settings />
+            </RequireAuth>
+          }
+        />
+
+        <Route path="/layout" element={<MainLayout />} />
       </Routes>
     </HydrationGate>
   );
