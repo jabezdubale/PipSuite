@@ -46,7 +46,7 @@ const Navbar = () => {
             />
           </div>
         </div>
-        <div className="flex flex-wrap border border-white justify-center items-center gap-2 w-[45%]">
+        <div className="flex flex-wrap justify-center items-center gap-2 w-[45%]">
           <div
             onClick={() => setAmountOverlayOpen()}
             className="relative flex justify-center w-20 items-center gap-2 py-1 px-2 bg-secondary-Background rounded-xl"
