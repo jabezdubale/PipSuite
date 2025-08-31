@@ -46,10 +46,10 @@ const Navbar = () => {
             />
           </div>
         </div>
-        <div className="flex justify-center items-center gap-2 w-[40%]">
+        <div className="flex flex-wrap border border-white justify-center items-center gap-2 w-[45%]">
           <div
             onClick={() => setAmountOverlayOpen()}
-            className="relative flex justify-center items-center gap-2 py-1 px-2 bg-secondary-Background rounded-xl"
+            className="relative flex justify-center w-20 items-center gap-2 py-1 px-2 bg-secondary-Background rounded-xl"
           >
             <p>$250</p>
             <MdKeyboardArrowDown />
@@ -63,7 +63,7 @@ const Navbar = () => {
           </div>
           <div
             onClick={() => setProfileOverlayOpen()}
-            className="relative flex justify-center items-center gap-2 py-1.5 px-3 bg-secondary-Background rounded-xl"
+            className="relative flex justify-center items-center w-20 gap-2 py-1.5 px-3 bg-secondary-Background rounded-xl"
           >
             <IoPersonOutline size={24} />
             <MdKeyboardArrowDown />
