@@ -63,9 +63,10 @@ const Navbar = () => {
           </div>
           <div
             onClick={() => setProfileOverlayOpen()}
-            className="relative py-1.5 px-3 bg-secondary-Background rounded-xl"
+            className="relative flex justify-center items-center gap-2 py-1.5 px-3 bg-secondary-Background rounded-xl"
           >
             <IoPersonOutline size={24} />
+            <MdKeyboardArrowDown />
             <div
               className={`${
                 profileOverlayOpen ? "" : "hidden"
