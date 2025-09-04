@@ -80,7 +80,7 @@ const Navbar = () => {
               setAmountOverlayOpen();
               setProfileOverlayOpenFalse();
             }}
-            className="relative flex justify-center w-20 items-center gap-2 py-1 px-2 bg-secondary-Background rounded-xl"
+            className="cursor-pointer relative flex justify-center w-20 items-center gap-2 py-1 px-2 bg-secondary-Background rounded-xl"
           >
             <p>${amount}</p>
             <MdKeyboardArrowDown />
@@ -137,7 +137,7 @@ const Navbar = () => {
                     </div>
                     <button
                       type="submit"
-                      className="border w-[70%]  border-brand-green bg-brand-green/30 rounded-xl p-2"
+                      className="cursor-pointer border w-[70%]  border-brand-green bg-brand-green/30 rounded-xl p-2"
                     >
                       Deposit
                     </button>
@@ -165,7 +165,7 @@ const Navbar = () => {
                     </div>
                     <button
                       type="submit"
-                      className="w-[70%] border border-brand-green bg-brand-green/30 rounded-xl p-2"
+                      className="cursor-pointer w-[70%] border border-brand-green bg-brand-green/30 rounded-xl p-2"
                     >
                       Withdraw
                     </button>
@@ -180,28 +180,30 @@ const Navbar = () => {
               setProfileOverlayOpen();
               setAmountOverlayOpenFalse();
             }}
-            className="relative flex justify-center items-center w-20 gap-2 py-1.5 px-3 bg-secondary-Background rounded-xl"
+            className="relative"
           >
-            <IoPersonOutline size={24} />
-            <MdKeyboardArrowDown />
+            <div className="cursor-pointer relative flex justify-center items-center w-20 gap-2 py-1.5 px-3 bg-secondary-Background rounded-xl">
+              <IoPersonOutline size={24} />
+              <MdKeyboardArrowDown />
+            </div>
             <div
               onClick={(e) => e.stopPropagation()}
               className={`${
                 profileOverlayOpen ? "" : "hidden"
-              } absolute z-1 bg-secondary-Background rounded-2xl flex flex-col justify-center items-center gap-3 mt-2 top-1/1 right-0 w-50 p-4`}
+              } absolute z-1 bg-secondary-Background rounded-2xl flex flex-col justify-center items-center gap-5 mt-2 top-1/1 right-0 w-50 p-4`}
             >
-              <div className="border border-main-border rounded-lg p-2 w-full bg-brand-green/30 text-center">
+              <div className="cursor-pointer border border-main-border rounded-lg p-2 w-full bg-brand-green/30 text-center">
                 <p>{user.name}</p>
               </div>
-              <div className=" flex flex-col justify-center items-center gap-1 w-full">
-                <p>Profile</p>
-                <p>Settings</p>
+              <div className=" flex flex-col justify-center items-center gap-3 w-full">
+                <p className="cursor-pointer">Profile</p>
+                <p className="cursor-pointer">Settings</p>
                 <div
                   onClick={() => {
                     logOut();
                     resetAllOverlay();
                   }}
-                  className="w-[75%] flex justify-center items-center gap-2 border border-main-border rounded-lg p-2"
+                  className="cursor-pointer w-[75%] flex justify-center items-center gap-2 border border-main-border rounded-lg p-2"
                 >
                   <PiSignOutBold />
                   <p>Sign Out</p>

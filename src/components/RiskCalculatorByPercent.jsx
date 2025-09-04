@@ -1,41 +1,118 @@
+import { useEffect } from "react";
 import useRiskCalculatorStore from "../stores/RiskCalculatorStore";
+import { apiGet } from "../lib/api";
 
-const RiskCalculatorByPercent = ({ allAssets }) => {
-  const setCalculated = useRiskCalculatorStore((state) => state.setCalculated);
+const RiskCalculatorByPercent = ({ selectedAsset }) => {
+  useEffect(() => {
+    const getAllAssets = async () => {
+      try {
+        const allAssets = await apiGet("Assets");
+        setAllAssets(allAssets);
+      } catch (err) {
+        console.log(`Error: ${err.message}`);
+      }
+    };
+
+    getAllAssets();
+  }, []);
+
+  const allAssets = useRiskCalculatorStore((state) => state.allAssets);
+  const setAllAssets = useRiskCalculatorStore((state) => state.setAllAssets);
 
   const assetPair = useRiskCalculatorStore((state) => state.assetPair);
-  const entryPrice = useRiskCalculatorStore((state) => state.entryPrice);
-  const takeProfit = useRiskCalculatorStore((state) => state.takeProfit);
-  const stopLoss = useRiskCalculatorStore((state) => state.stopLoss);
-  const accountBalance = useRiskCalculatorStore(
-    (state) => state.accountBalance
-  );
-  const riskPercentage = useRiskCalculatorStore(
-    (state) => state.riskPercentage
-  );
-  const lotSize = useRiskCalculatorStore((state) => state.lotSize);
-  const leverage = useRiskCalculatorStore((state) => state.leverage);
   const setAssetPair = useRiskCalculatorStore((state) => state.setAssetPair);
+
+  const entryPrice = useRiskCalculatorStore((state) => state.entryPrice);
   const setEntryPrice = useRiskCalculatorStore((state) => state.setEntryPrice);
+
+  const takeProfit = useRiskCalculatorStore((state) => state.takeProfit);
   const setTakeProfit = useRiskCalculatorStore((state) => state.setTakeProfit);
+
+  const stopLoss = useRiskCalculatorStore((state) => state.stopLoss);
   const setStopLoss = useRiskCalculatorStore((state) => state.setStopLoss);
-  const setAccountBalance = useRiskCalculatorStore(
-    (state) => state.setAccountBalance
-  );
-  const setRiskPercentage = useRiskCalculatorStore(
-    (state) => state.setRiskPercentage
-  );
-  const setLotSize = useRiskCalculatorStore((state) => state.setLotSize);
+
+  // prettier-ignore
+  const accountBalance = useRiskCalculatorStore((state) => state.accountBalance);
+  // prettier-ignore
+  const setAccountBalance = useRiskCalculatorStore((state) => state.setAccountBalance);
+
+  // prettier-ignore
+  const riskPercentage = useRiskCalculatorStore((state) => state.riskPercentage);
+  // prettier-ignore
+  const setRiskPercentage = useRiskCalculatorStore((state) => state.setRiskPercentage);
+
+  const leverage = useRiskCalculatorStore((state) => state.leverage);
   const setLeverage = useRiskCalculatorStore((state) => state.setLeverage);
-  const handleSubmit = (e) => {
+
+  const direction = useRiskCalculatorStore((state) => state.direction);
+  const setDirection = useRiskCalculatorStore((state) => state.setDirection);
+
+  const lotSize = useRiskCalculatorStore((state) => state.lotSize);
+  const setLotSize = useRiskCalculatorStore((state) => state.setLotSize);
+
+  const TpPoint = useRiskCalculatorStore((state) => state.TpPoint);
+  const setTpPoint = useRiskCalculatorStore((state) => state.setTpPoint);
+
+  const SLPoint = useRiskCalculatorStore((state) => state.SLPoint);
+  const setSLPoint = useRiskCalculatorStore((state) => state.setSLPoint);
+
+  const calculated = useRiskCalculatorStore((state) => state.calculated);
+  // prettier-ignore
+  const setCalculatedTrue = useRiskCalculatorStore((state) => state.setCalculatedTrue);
+  // prettier-ignore
+  const setCalculatedFalse = useRiskCalculatorStore((state) => state.setCalculatedFalse);
+
+  const setShowAssetPairFalse = useRiskCalculatorStore(
+    (state) => state.setShowAssetPairFalse
+  );
+
+  const handleCalculate = (e) => {
     e.preventDefault();
-    setCalculated();
+    if (!selectedAsset) return;
+
+    const entry = Number(entryPrice);
+    const tp = Number(takeProfit);
+    const sl = Number(stopLoss);
+    const bal = Number(accountBalance);
+    const pct = Number(riskPercentage);
+    const cs = Number(selectedAsset.contractSize);
+    const tick = Number(selectedAsset.tick);
+    const pip = Number(selectedAsset.pip);
+
+    if (![entry, tp, sl, bal, pct, cs, tick, pip].every(Number.isFinite))
+      return;
+
+    const snap = (v) => Math.round(v / tick) * tick;
+    const entryQ = snap(entry),
+      tpQ = snap(tp),
+      slQ = snap(sl);
+
+    const longOrShort = tpQ >= entryQ ? "Long" : "Short";
+    setDirection(longOrShort);
+    setCalculatedTrue();
+
+    const tpPoints = Math.abs(tpQ - entryQ);
+    const slPoints = Math.abs(entryQ - slQ);
+
+    setTpPoint(Number(tpPoints.toFixed(5)));
+    setSLPoint(Number(slPoints.toFixed(5)));
+
+    const riskAmount = bal * (pct / 100);
+    const denom = slPoints * cs;
+    const lots = denom > 0 ? riskAmount / denom : 0;
+    setLotSize(lots);
+    setShowAssetPairFalse();
+  };
+
+  const handleSelectAssetPair = (e) => {
+    const value = e.target.value;
+    setAssetPair(value);
   };
 
   return (
     <div>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={handleCalculate}
         className="flex flex-col justify-center items-center"
       >
         <div className="grid grid-cols-2 w-full gap-y-3 my-5">
@@ -45,9 +122,10 @@ const RiskCalculatorByPercent = ({ allAssets }) => {
               id="assetPair"
               className="border border-main-border p-2 rounded-xl"
               value={assetPair}
-              onChange={(e) => setAssetPair(e.target.value)}
+              required
+              onChange={handleSelectAssetPair}
             >
-              <option value=""></option>
+              <option value="" className="bg-secondary-Background"></option>
               {allAssets.map((assetData) => (
                 <option
                   className="bg-secondary-Background"
@@ -64,9 +142,11 @@ const RiskCalculatorByPercent = ({ allAssets }) => {
             <label htmlFor="entryPrice">Entry Price</label>
             <input
               className="border border-main-border p-2 rounded-xl"
+              autoComplete="off"
               type="text"
               id="entryPrice"
               value={entryPrice}
+              required
               onChange={(e) => setEntryPrice(e.target.value)}
             />
           </div>
@@ -75,9 +155,11 @@ const RiskCalculatorByPercent = ({ allAssets }) => {
             <label htmlFor="takeProfit">Take-Profit</label>
             <input
               className="border border-main-border p-2 rounded-xl"
+              autoComplete="off"
               type="text"
               id="takeProfit"
               value={takeProfit}
+              required
               onChange={(e) => setTakeProfit(e.target.value)}
             />
           </div>
@@ -86,9 +168,11 @@ const RiskCalculatorByPercent = ({ allAssets }) => {
             <label htmlFor="stopLoss">Stop-Loss</label>
             <input
               className="border border-main-border p-2 rounded-xl"
+              autoComplete="off"
               type="text"
               id="stopLoss"
               value={stopLoss}
+              required
               onChange={(e) => setStopLoss(e.target.value)}
             />
           </div>
@@ -97,9 +181,11 @@ const RiskCalculatorByPercent = ({ allAssets }) => {
             <label htmlFor="accountBalance">Account Balance($)</label>
             <input
               className="border border-main-border p-2 rounded-xl"
+              autoComplete="off"
               type="text"
               id="accountBalance"
               value={accountBalance}
+              required
               onChange={(e) => setAccountBalance(e.target.value)}
             />
           </div>
@@ -111,6 +197,7 @@ const RiskCalculatorByPercent = ({ allAssets }) => {
               type="text"
               id="lotSize"
               value={lotSize}
+              required
               onChange={(e) => setLotSize(e.target.value)}
             />
           </div> */}
@@ -119,9 +206,11 @@ const RiskCalculatorByPercent = ({ allAssets }) => {
             <label htmlFor="riskPercentage">Risk Percentage</label>
             <input
               className="border border-main-border p-2 rounded-xl"
+              autoComplete="off"
               type="text"
               id="riskPercentage"
               value={riskPercentage}
+              required
               onChange={(e) => setRiskPercentage(e.target.value)}
             />
           </div>
@@ -130,16 +219,18 @@ const RiskCalculatorByPercent = ({ allAssets }) => {
             <label htmlFor="leverage">Leverage</label>
             <input
               className="border border-main-border p-2 rounded-xl"
+              autoComplete="off"
               type="text"
               id="leverage"
               value={leverage}
+              required
               onChange={(e) => setLeverage(e.target.value)}
             />
           </div>
         </div>
         <button
           type="submit"
-          className="border border-brand-green bg-brand-green/30 p-2 rounded-xl w-[80%]"
+          className="border border-brand-green bg-brand-green/30 p-2 rounded-xl w-[80%] cursor-pointer"
         >
           Calculate Risk
         </button>

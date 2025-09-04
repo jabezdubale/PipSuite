@@ -10,6 +10,12 @@ const useRiskCalculatorStore = create((set) => ({
   lotSize: "",
   leverage: "",
   calculated: false,
+  allAssets: [],
+  selectedAsset: null,
+  direction: "",
+  TpPoint: null,
+  SLPoint: null,
+  showAssetPair: true,
   setAssetPair: (value) => set(() => ({ assetPair: value })),
   setEntryPrice: (value) => set(() => ({ entryPrice: value })),
   setTakeProfit: (value) => set(() => ({ takeProfit: value })),
@@ -18,7 +24,17 @@ const useRiskCalculatorStore = create((set) => ({
   setRiskPercentage: (value) => set(() => ({ riskPercentage: value })),
   setLotSize: (value) => set(() => ({ lotSize: value })),
   setLeverage: (value) => set(() => ({ leverage: value })),
-  setCalculated: () => set((state) => ({ calculated: !state.calculated })),
+  setCalculatedTrue: () => set(() => ({ calculated: true })),
+  setCalculatedFalse: () => set(() => ({ calculated: false })),
+  setAllAssets: (value) => set(() => ({ allAssets: value })),
+  setSelectedAsset: (value) => set(() => ({ selectedAsset: value })),
+  setDirection: (value) => set(() => ({ direction: value })),
+  setTpPoint: (value) => set(() => ({ TpPoint: value })),
+  setSLPoint: (value) => set(() => ({ SLPoint: value })),
+  setShowAssetPair: () =>
+    set((state) => ({ showAssetPair: !state.showAssetPair })),
+  setShowAssetPairTrue: () => set(() => ({ showAssetPair: true })),
+  setShowAssetPairFalse: () => set(() => ({ showAssetPair: false })),
 }));
 
 export default useRiskCalculatorStore;
