@@ -180,35 +180,35 @@ const RiskCalculator = () => {
                     </p>
                   </div>
                   {showAssetPair ? (
-                    <div className="pl-5 pb-2 text-base italic flex flex-col gap-2">
-                      <div className="flex">
-                        <p>Contract Size (Value per Point) =</p>
+                    <div className="pl-2 pb-2 text-base italic flex flex-col gap-1">
+                      <div className="flex border border-white/10 rounded-lg py-1 px-2">
                         <p>
+                          Contract Size (Value per Point) ={" "}
                           {CleanNumber(selectedAsset.contractSize)}{" "}
                           {unitLabel(selectedAsset.contractSizeUnit)}
                         </p>
                       </div>
-                      <p>
+                      <p className="flex border border-white/10 rounded-lg py-1 px-2">
                         Pip: {CleanNumber(selectedAsset.pip)}{" "}
                         {unitLabel(selectedAsset.pipUnit)}
                       </p>
-                      <p>
+                      <p className="flex border border-white/10 rounded-lg py-1 px-2">
                         Tick: {CleanNumber(selectedAsset.tick)}{" "}
                         {unitLabel(selectedAsset.tickUnit)}
                       </p>
 
-                      <div className="flex">
-                        <p>Pip Value per lot = ( Contract Size * pip ) = </p>
+                      <div className="flex border border-white/10 rounded-lg py-1 px-2">
                         <p>
+                          Pip Value per lot = ( Contract Size * pip ) =
                           {CleanNumber(
                             selectedAsset.contractSize * selectedAsset.pip
                           )}{" "}
                           {selectedAsset.quote} per pip
                         </p>
                       </div>
-                      <div className="flex">
-                        <p>Tick Value per lot = ( Contract Size * tick ) = </p>
+                      <div className="flex border border-white/10 rounded-lg py-1 px-2">
                         <p>
+                          Tick Value per lot = ( Contract Size * tick ) =
                           {CleanNumber(
                             selectedAsset.contractSize * selectedAsset.tick
                           )}{" "}
@@ -260,13 +260,17 @@ const RiskCalculator = () => {
                       </p>
                     </div>
                     {showDirec ? (
-                      <div className="ml-5 text-base italic">
-                        <p>
+                      <div className="ml-2 text-base italic">
+                        <p className=" border border-white/10 rounded-lg py-1 px-2 mb-1">
                           {entryPrice} {direction === "Long" ? "<" : ">"}{" "}
                           {takeProfit} : {direction}
                         </p>
-                        <p>If Entry Price {"<"} Take Profit Price : Long</p>
-                        <p>If Entry Price {">"} Take Profit Price : Short</p>
+                        <p className=" border border-white/10 rounded-lg py-1 px-2 mb-1">
+                          If Entry Price {"<"} Take Profit Price : Long
+                        </p>
+                        <p className=" border border-white/10 rounded-lg py-1 px-2 mb-1">
+                          If Entry Price {">"} Take Profit Price : Short
+                        </p>
                       </div>
                     ) : null}
                   </div>
@@ -302,25 +306,25 @@ const RiskCalculator = () => {
                     </div>
 
                     {showTpCalc ? (
-                      <div className="ml-5 text-base italic">
+                      <div className="ml-2 text-base italic">
                         {direction === "Long" ? (
-                          <p>
+                          <p className=" border border-white/10 rounded-lg py-1 px-2 mb-1">
                             TpPoints = Take Profit - Entry price= {takeProfit} -{" "}
                             {entryPrice} = {TpPoint}
                           </p>
                         ) : (
-                          <p>
+                          <p className=" border border-white/10 rounded-lg py-1 px-2 mb-1">
                             TpPoints = Entry price - Take Profit= {entryPrice} -{" "}
                             {takeProfit} = {TpPoint}
                           </p>
                         )}
 
-                        <p>
+                        <p className=" border border-white/10 rounded-lg py-1 px-2 mb-1">
                           TpPips = TpPoints / pip ={TpPoint} /{" "}
                           {selectedAsset.pip} =
                           {(TpPoint / selectedAsset.pip).toFixed(1)} Pips
                         </p>
-                        <p>
+                        <p className=" border border-white/10 rounded-lg py-1 px-2 mb-1">
                           TpTicks = TpPoints / pip ={TpPoint} /{" "}
                           {selectedAsset.tick} =
                           {(TpPoint / selectedAsset.tick).toFixed(1)} Pips
@@ -361,25 +365,25 @@ const RiskCalculator = () => {
                     </div>
 
                     {showSlCalc ? (
-                      <div className="ml-5 text-base italic">
+                      <div className="ml-2 text-base italic">
                         {direction === "Long" ? (
-                          <p>
+                          <p className=" border border-white/10 rounded-lg py-1 px-2 mb-1">
                             SLPoints = Entry price - Stop Loss = {entryPrice} -{" "}
                             {stopLoss} = {SLPoint}
                           </p>
                         ) : (
-                          <p>
+                          <p className=" border border-white/10 rounded-lg py-1 px-2 mb-1">
                             SLPoints = Stop Loss -Entry price = {stopLoss} -{" "}
                             {entryPrice} = {SLPoint}
                           </p>
                         )}
 
-                        <p>
+                        <p className=" border border-white/10 rounded-lg py-1 px-2 mb-1">
                           SLPips = SLPoints / pip ={SLPoint} /{" "}
                           {selectedAsset.pip} =
                           {(SLPoint / selectedAsset.pip).toFixed(1)} Pips
                         </p>
-                        <p>
+                        <p className=" border border-white/10 rounded-lg py-1 px-2 mb-1">
                           SLTicks = SLPoints / pip ={SLPoint} /{" "}
                           {selectedAsset.tick} =
                           {(SLPoint / selectedAsset.tick).toFixed(1)} Pips
@@ -409,8 +413,8 @@ const RiskCalculator = () => {
                       </p>
                     </div>
                     {showRRCalc ? (
-                      <div className="ml-5 text-base italic">
-                        <p>
+                      <div className="ml-2 text-base italic">
+                        <p className=" border border-white/10 rounded-lg py-1 px-2 mb-1">
                           RR = TpPoint / SLPoint = {TpPoint} / {SLPoint} ={" "}
                           {(TpPoint / SLPoint).toFixed(2)}
                         </p>
@@ -443,8 +447,8 @@ const RiskCalculator = () => {
                         </p>
                       </div>
                       {showRiskCalc ? (
-                        <div className="ml-5 text-base italic">
-                          <p>
+                        <div className="ml-2 text-base italic">
+                          <p className=" border border-white/10 rounded-lg py-1 px-2 mb-1">
                             Risk Amount = Account Balance * (Risk Percentage /
                             100) = {accountBalance} * {riskPercentage}/100 ={" "}
                             {(accountBalance * riskPercentage) / 100}
@@ -481,8 +485,8 @@ const RiskCalculator = () => {
                         </p>
                       </div>
                       {showRiskCalc ? (
-                        <div className="ml-5 text-base italic">
-                          <p>
+                        <div className="ml-2 text-base italic">
+                          <p className=" border border-white/10 rounded-lg py-1 px-2 mb-1">
                             Risk Amount = (Entry Price - Stop Loss) * Value per
                             Point * Lot Size = ({entryPrice} - {stopLoss}) *{" "}
                             {selectedAsset.contractSize} * {lotSize} ={" "}
@@ -520,8 +524,8 @@ const RiskCalculator = () => {
                         </p>
                       </div>
                       {showLotCalc ? (
-                        <div className="ml-5 text-base italic">
-                          <p>
+                        <div className="ml-2 text-base italic">
+                          <p className=" border border-white/10 rounded-lg py-1 px-2 mb-1">
                             Lot Size = Risk Amount / (SLPoint * Value Per Point)
                             = {(accountBalance * riskPercentage) / 100} / (
                             {SLPoint} * {selectedAsset.contractSize}) ={" "}
@@ -561,8 +565,8 @@ const RiskCalculator = () => {
                         </p>
                       </div>
                       {showLotCalc ? (
-                        <div className="ml-5 text-base italic">
-                          <p>
+                        <div className="ml-2 text-base italic">
+                          <p className=" border border-white/10 rounded-lg py-1 px-2 mb-1">
                             Risk Percentage = ((SLPoint * Value per Point * Lot
                             Size) / Account Balance)*100 ={" "}
                             {(accountBalance * riskPercentage) / 100} / (
@@ -610,8 +614,8 @@ const RiskCalculator = () => {
                       </p>
                     </div>
                     {showProfCalc ? (
-                      <div className="ml-5 text-base italic">
-                        <p>
+                      <div className="ml-2 text-base italic">
+                        <p className=" border border-white/10 rounded-lg py-1 px-2 mb-1">
                           Potential Profit = TpPoint * Value Per Point * Lot
                           Size = {TpPoint} * {selectedAsset.contractSize} *{" "}
                           {lotSize.toFixed(2)} ={" "}
@@ -653,8 +657,8 @@ const RiskCalculator = () => {
                       </p>
                     </div>
                     {showMargCalc ? (
-                      <div className="ml-5 text-base italic">
-                        <p>
+                      <div className="ml-2 text-base italic">
+                        <p className=" border border-white/10 rounded-lg py-1 px-2 mb-1">
                           Required Margin = (entryPrice * Value per Point *
                           lotSize) / leverage = ({entryPrice} *{" "}
                           {selectedAsset.contractSize} * {lotSize.toFixed(2)}) /{" "}
