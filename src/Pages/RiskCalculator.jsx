@@ -5,11 +5,7 @@ import RiskCalculatorByLot from "../components/RiskCalculatorByLot";
 import useRiskCalculatorStore from "../stores/RiskCalculatorStore";
 import CleanNumber from "../components/CleanNumber";
 import { IoIosArrowDropdown } from "react-icons/io";
-{
-  /* <IoIosArrowDropdown /> */
-}
 import { IoIosArrowDropup } from "react-icons/io";
-<IoIosArrowDropup />;
 
 const RiskCalculator = () => {
   const allAssets = useRiskCalculatorStore((state) => state.allAssets);
@@ -102,8 +98,8 @@ const RiskCalculator = () => {
                     setByRisk(true);
                     setCalculatedFalse();
                     setShowAssetPairTrue();
-                    setLotSize(null);
-                    setRiskPercentage(null);
+                    setLotSize("");
+                    setRiskPercentage("");
                     setshowDirec(false);
                     setshowTpCalc(false);
                     setshowSlCalc(false);
@@ -127,7 +123,7 @@ const RiskCalculator = () => {
                     setCalculatedFalse();
                     setShowAssetPairTrue();
                     setLotSize("");
-                    setRiskPercentage(null);
+                    setRiskPercentage("");
                     setshowDirec(false);
                     setshowTpCalc(false);
                     setshowSlCalc(false);
@@ -248,7 +244,7 @@ const RiskCalculator = () => {
                       <p>
                         <span className="font-bold inline-flex items-center justify-start gap-1">
                           <span className="text-brand-green/50">
-                            {showTpCalc ? (
+                            {showDirec ? (
                               <IoIosArrowDropup />
                             ) : (
                               <IoIosArrowDropdown />
@@ -619,9 +615,11 @@ const RiskCalculator = () => {
                           Potential Profit = TpPoint * Value Per Point * Lot
                           Size = {TpPoint} * {selectedAsset.contractSize} *{" "}
                           {lotSize.toFixed(2)} ={" "}
-                          {TpPoint *
+                          {(
+                            TpPoint *
                             selectedAsset.contractSize *
-                            lotSize.toFixed(2)}
+                            lotSize
+                          ).toFixed(2)}
                           {selectedAsset.quote}{" "}
                         </p>
                       </div>

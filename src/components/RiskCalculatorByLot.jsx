@@ -1,6 +1,9 @@
+import { useState } from "react";
 import useRiskCalculatorStore from "../stores/RiskCalculatorStore";
 
 const RiskCalculatorByLot = ({ selectedAsset }) => {
+  const [lotSizeInput, setLotSizeInput] = useState("");
+
   const allAssets = useRiskCalculatorStore((state) => state.allAssets);
   const setAllAssets = useRiskCalculatorStore((state) => state.setAllAssets);
 
@@ -53,6 +56,7 @@ const RiskCalculatorByLot = ({ selectedAsset }) => {
 
   const handleCalculate = (e) => {
     e.preventDefault();
+    setLotSize(Number(lotSizeInput));
     if (!selectedAsset) return;
 
     const entry = Number(entryPrice);
@@ -175,10 +179,11 @@ const RiskCalculatorByLot = ({ selectedAsset }) => {
             <input
               className="border border-main-border p-2 rounded-xl"
               type="text"
+              autoComplete="off"
               id="lotSize"
-              value={lotSize}
+              value={lotSizeInput}
               required
-              onChange={(e) => setLotSize(e.target.value)}
+              onChange={(e) => setLotSizeInput(e.target.value)}
             />
           </div>
 
