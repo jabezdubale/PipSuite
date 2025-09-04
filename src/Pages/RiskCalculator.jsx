@@ -614,7 +614,7 @@ const RiskCalculator = () => {
                         <p className=" border border-white/10 rounded-lg py-1 px-2 mb-1">
                           Potential Profit = TpPoint * Value Per Point * Lot
                           Size = {TpPoint} * {selectedAsset.contractSize} *{" "}
-                          {lotSize.toFixed(2)} ={" "}
+                          {lotSize.toFixed(5)} ={" "}
                           {(
                             TpPoint *
                             selectedAsset.contractSize *
@@ -659,7 +659,7 @@ const RiskCalculator = () => {
                         <p className=" border border-white/10 rounded-lg py-1 px-2 mb-1">
                           Required Margin = (entryPrice * Value per Point *
                           lotSize) / leverage = ({entryPrice} *{" "}
-                          {selectedAsset.contractSize} * {lotSize.toFixed(2)}) /{" "}
+                          {selectedAsset.contractSize} * {lotSize.toFixed(5)}) /{" "}
                           {leverage} ={" "}
                           {(
                             (entryPrice *
