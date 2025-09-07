@@ -9,13 +9,15 @@ import { Link } from "react-router-dom";
 import useMainNavOverlay from "../stores/MainNavOverlay";
 import useAuth from "../stores/auth";
 import { useState } from "react";
+import { apiPatch } from "../lib/api";
 
 const Navbar = () => {
-  const [amount, setAmount] = useState(250);
+  const user = useAuth((state) => state.user);
+  const setUser = useAuth((state) => state.setUser);
+  const [amount, setAmount] = useState(user.availableMoney);
   const [depositAmount, setDepositAmount] = useState("");
   const [withdrawAmount, setWithdrawAmount] = useState("");
   const [showDeposit, setShowDeposit] = useState(true);
-  const user = useAuth((state) => state.user);
   const resetAllOverlay = useSidebarOpener((state) => state.resetAllOverlay);
   const logOut = useAuth((state) => state.logOut);
   const setOverlaySidebarOpen = useSidebarOpener(
@@ -51,7 +53,7 @@ const Navbar = () => {
           <div
             className={`${
               overlaySidebarOpen ? "hidden" : ""
-            } sm:hidden pb-1 pl-[5%]`}
+            } cursor-pointer sm:hidden pb-1 pl-[5%]`}
             onClick={setOverlaySidebarOpen}
           >
             <GoSidebarCollapse size={24} />
@@ -70,10 +72,12 @@ const Navbar = () => {
             />
           </div> */}
         </div>
+
         <div
           onClick={(e) => e.stopPropagation()}
           className="flex flex-wrap justify-center items-center gap-2 w-[65%]"
         >
+          {/* Amount field */}
           <div
             onClick={(e) => {
               e.stopPropagation();
@@ -116,9 +120,16 @@ const Navbar = () => {
               <div>
                 {showDeposit ? (
                   <form
-                    onSubmit={(e) => {
+                    onSubmit={async (e) => {
                       e.preventDefault();
-                      setAmount(Number(amount) + Number(depositAmount));
+                      const newAmount = Number(amount) + Number(depositAmount);
+                      const updated = await apiPatch(`Users/${user.id}`, {
+                        availableMoney: newAmount,
+                      });
+                      setUser(
+                        updated ?? { ...user, availableMoney: newAmount }
+                      );
+                      setAmount(newAmount);
                       setWithdrawAmount("");
                       setDepositAmount("");
                     }}
@@ -144,9 +155,16 @@ const Navbar = () => {
                   </form>
                 ) : (
                   <form
-                    onSubmit={(e) => {
+                    onSubmit={async (e) => {
                       e.preventDefault();
-                      setAmount(Number(amount) - Number(withdrawAmount));
+                      const newAmount = Number(amount) - Number(withdrawAmount);
+                      const updated = await apiPatch(`Users/${user.id}`, {
+                        availableMoney: newAmount,
+                      });
+                      setUser(
+                        updated ?? { ...user, availableMoney: newAmount }
+                      );
+                      setAmount(newAmount);
                       setWithdrawAmount("");
                       setDepositAmount("");
                     }}

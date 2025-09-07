@@ -1,13 +1,14 @@
 import { useEffect } from "react";
 import useRiskCalculatorStore from "../stores/RiskCalculatorStore";
 import { apiGet } from "../lib/api";
+import useAuth from "../stores/auth";
 
 const RiskCalculatorByPercent = ({ selectedAsset }) => {
   useEffect(() => {
     const getAllAssets = async () => {
       try {
-        const allAssets = await apiGet("Assets");
-        setAllAssets(allAssets);
+        const allAsset = await apiGet("Assets");
+        setAllAssets(allAsset);
       } catch (err) {
         console.log(`Error: ${err.message}`);
       }
@@ -65,6 +66,8 @@ const RiskCalculatorByPercent = ({ selectedAsset }) => {
   const setShowAssetPairFalse = useRiskCalculatorStore(
     (state) => state.setShowAssetPairFalse
   );
+
+  const user = useAuth((state) => state.user);
 
   const handleCalculate = (e) => {
     e.preventDefault();
@@ -179,15 +182,26 @@ const RiskCalculatorByPercent = ({ selectedAsset }) => {
 
           <div className="flex flex-col gap-1 mr-3">
             <label htmlFor="accountBalance">Account Balance($)</label>
-            <input
-              className="border border-main-border p-2 rounded-xl"
-              autoComplete="off"
-              type="text"
-              id="accountBalance"
-              value={accountBalance}
-              required
-              onChange={(e) => setAccountBalance(e.target.value)}
-            />
+            <div className="flex gap-1.5">
+              <input
+                className="border border-main-border w-full p-2 rounded-xl"
+                autoComplete="off"
+                type="text"
+                id="accountBalance"
+                value={accountBalance}
+                required
+                onChange={(e) => setAccountBalance(e.target.value)}
+              />
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setAccountBalance(user.availableMoney);
+                }}
+                className="text-xs p-1 cursor-pointer border border-brand-green/50 bg-brand-green/10 rounded-xl"
+              >
+                Use my account
+              </button>
+            </div>
           </div>
 
           {/* <div className="flex flex-col gap-1 mr-3">

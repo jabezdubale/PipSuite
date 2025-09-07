@@ -87,7 +87,7 @@ const RiskCalculator = () => {
         <div className="w-full flex p-5">
           <div className=" text-primary-headings text-lg gap-5 flex flex-col items-center justify-center w-[100dvw] md:w-[80dvw] lg:w-[50dvw]">
             <div className="w-full">
-              <p className="text-4xl mb-4">Risk Calculator</p>
+              <p className="text-3xl mb-4">Risk Calculator</p>
               <p>Calculate your risk and profit amount.</p>
             </div>
 

@@ -28,7 +28,7 @@ const SmallSidebar = ({ styles }) => {
       <div className="flex flex-col justify-center items-center gap-5 w-full">
         <div
           onClick={setLargeSidebarOpen}
-          className="text-gray-400 w-full flex justify-center"
+          className="text-gray-400 w-full flex justify-center cursor-pointer"
         >
           <GoSidebarCollapse size={20} />
         </div>
@@ -98,7 +98,7 @@ const SmallSidebar = ({ styles }) => {
         </Link>
       </div>
       <div className="flex flex-col justify-end items-center w-full gap-5">
-        <div className="w-[95%] py-3 px-1 bg-main-Background rounded-lg flex justify-center items-center ">
+        <div className=" cursor-pointer w-[95%] py-3 px-1 bg-main-Background rounded-lg flex justify-center items-center ">
           <div className="text-main-Background w-[90%] py-2 bg-brand-green rounded-lg flex justify-center items-center ">
             <IoIosAdd size={20} />
           </div>
@@ -108,7 +108,7 @@ const SmallSidebar = ({ styles }) => {
             logOut();
             resetAllOverlay();
           }}
-          className="w-[95%] flex justify-center items-center gap-2 border border-main-border rounded-lg p-2"
+          className="w-[95%] cursor-pointer flex justify-center items-center gap-2 border border-main-border rounded-lg p-2"
         >
           <PiSignOutBold size={20} />
         </div>

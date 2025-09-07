@@ -32,7 +32,7 @@ const SidebarOverlay = ({ styles }) => {
       <div className="h-full flex flex-col justify-center items-center gap-3 w-full">
         <div
           onClick={setOverlaySidebarOpen}
-          className="h-full text-gray-400 w-full flex justify-end pr-[10%]"
+          className="cursor-pointer h-full text-gray-400 w-full flex justify-end pr-[10%]"
         >
           <GoSidebarExpand size={20} />
         </div>
@@ -129,7 +129,7 @@ const SidebarOverlay = ({ styles }) => {
       <div className="flex flex-col justify-end items-center w-full gap-2">
         <div className="w-[95%] flex flex-col justify-center items-center gap-2 py-3 px-4 bg-main-Background rounded-lg">
           <p className="w-full">Quick Actions</p>
-          <div className="text-main-Background w-full bg-brand-green rounded-lg flex justify-center items-center p-2">
+          <div className="text-main-Background cursor-pointer w-full bg-brand-green rounded-lg flex justify-center items-center p-2">
             <IoIosAdd size={20} />
             <p>New Trade</p>
           </div>
@@ -139,7 +139,7 @@ const SidebarOverlay = ({ styles }) => {
             logOut();
             resetAllOverlay();
           }}
-          className="w-[95%] flex justify-center items-center gap-2 border border-main-border rounded-lg p-2"
+          className="w-[95%] cursor-pointer flex justify-center items-center gap-2 border border-main-border rounded-lg p-2"
         >
           <PiSignOutBold />
           <p>Sign Out</p>

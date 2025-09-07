@@ -11,6 +11,8 @@ import RiskCalculator from "./Pages/RiskCalculator";
 import BackTester from "./Pages/BackTester";
 import MoreTools from "./Pages/MoreTools";
 import Settings from "./Pages/Settings";
+import NewTrade from "./Pages/NewTrade";
+import EditTrade from "./Pages/EditTrade";
 
 function App() {
   return (
@@ -54,6 +56,22 @@ function App() {
           element={
             <RequireAuth>
               <RiskCalculator />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/new-trade"
+          element={
+            <RequireAuth>
+              <NewTrade />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/edit-trade"
+          element={
+            <RequireAuth>
+              <EditTrade />
             </RequireAuth>
           }
         />

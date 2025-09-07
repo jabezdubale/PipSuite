@@ -37,7 +37,7 @@ const MainLayout = ({ children }) => {
           <div
             className={`${
               overlaySidebarOpen ? "" : "hidden"
-            } absolute w-[100dvw] z-100 h-full bg-main-Background/70`}
+            }  sm:hidden absolute w-[100dvw] z-100 h-full bg-main-Background/70`}
             onClick={(e) => {
               if (e.target === e.currentTarget) setOverlaySidebarOpen();
             }}

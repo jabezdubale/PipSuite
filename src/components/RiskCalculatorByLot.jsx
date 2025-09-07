@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useRiskCalculatorStore from "../stores/RiskCalculatorStore";
+import useAuth from "../stores/auth";
 
 const RiskCalculatorByLot = ({ selectedAsset }) => {
   const [lotSizeInput, setLotSizeInput] = useState("");
@@ -53,6 +54,7 @@ const RiskCalculatorByLot = ({ selectedAsset }) => {
   const setShowAssetPairFalse = useRiskCalculatorStore(
     (state) => state.setShowAssetPairFalse
   );
+  const user = useAuth((state) => state.user);
 
   const handleCalculate = (e) => {
     e.preventDefault();
@@ -163,15 +165,26 @@ const RiskCalculatorByLot = ({ selectedAsset }) => {
 
           <div className="flex flex-col gap-1 mr-3">
             <label htmlFor="accountBalance">Account Balance($)</label>
-            <input
-              className="border border-main-border p-2 rounded-xl"
-              autoComplete="off"
-              type="text"
-              id="accountBalance"
-              value={accountBalance}
-              required
-              onChange={(e) => setAccountBalance(e.target.value)}
-            />
+            <div className="flex gap-1.5">
+              <input
+                className="border border-main-border w-full p-2 rounded-xl"
+                autoComplete="off"
+                type="text"
+                id="accountBalance"
+                value={accountBalance}
+                required
+                onChange={(e) => setAccountBalance(e.target.value)}
+              />
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setAccountBalance(user.availableMoney);
+                }}
+                className="text-xs p-1 cursor-pointer border border-brand-green/50 bg-brand-green/10 rounded-xl"
+              >
+                Use my account
+              </button>
+            </div>
           </div>
 
           <div className="flex flex-col gap-1 mr-3">
