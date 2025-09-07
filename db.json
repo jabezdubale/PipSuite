@@ -11,7 +11,10 @@
       "winRate": 0,
       "averageRR": 0,
       "winStreak": 0,
-      "strategyIds": ["s-fvg", "s-bos"]
+      "strategyIds": [
+        "s-fvg",
+        "s-bos"
+      ]
     },
     {
       "id": "3b73",
@@ -55,7 +58,10 @@
       "lotSize": 0.1,
       "tradedPips": 285,
       "session": "NY",
-      "strategyIds": ["s-fvg", "s-bos"],
+      "strategyIds": [
+        "s-fvg",
+        "s-bos"
+      ],
       "rr": 1.8,
       "pnl": 185.6,
       "journal": "Breakout continuation after NY open.",
@@ -78,9 +84,11 @@
       "lotSize": 0.5,
       "tradedPips": 34,
       "session": "LDN",
-      "strategyIds": ["s-bos"],
+      "strategyIds": [
+        "s-bos"
+      ],
       "rr": 1.7,
-      "pnl": 170.0,
+      "pnl": 170,
       "journal": "London reversal from supply.",
       "status": "closed",
       "createdAt": "2025-08-02T08:30:00Z",
@@ -95,15 +103,17 @@
       "direction": "long",
       "entryPrice": 154.28,
       "takeProfit": 154.95,
-      "stopLoss": 154.0,
+      "stopLoss": 154,
       "riskPercent": 1.5,
       "riskAmount": 30,
       "lotSize": 0.3,
       "tradedPips": 67,
       "session": "TKO",
-      "strategyIds": ["s-fvg"],
+      "strategyIds": [
+        "s-fvg"
+      ],
       "rr": 2.4,
-      "pnl": 201.0,
+      "pnl": 201,
       "journal": "Tokyo session bounce off demand.",
       "status": "closed",
       "createdAt": "2025-08-03T01:10:00Z",
@@ -124,9 +134,12 @@
       "lotSize": 0.4,
       "tradedPips": 45,
       "session": "LDN",
-      "strategyIds": ["s-fvg", "s-bos"],
+      "strategyIds": [
+        "s-fvg",
+        "s-bos"
+      ],
       "rr": 1.7,
-      "pnl": 180.0,
+      "pnl": 180,
       "journal": "Bullish BOS retest.",
       "status": "closed",
       "createdAt": "2025-08-05T09:05:00Z",
@@ -139,17 +152,19 @@
       "assetPair": "BTCUSD",
       "broker": "binance",
       "direction": "short",
-      "entryPrice": 68250.0,
-      "takeProfit": 67500.0,
-      "stopLoss": 68650.0,
+      "entryPrice": 68250,
+      "takeProfit": 67500,
+      "stopLoss": 68650,
       "riskPercent": 1,
       "riskAmount": 50,
       "lotSize": 0.02,
       "tradedPips": 7500,
       "session": "NY",
-      "strategyIds": ["s-bos"],
+      "strategyIds": [
+        "s-bos"
+      ],
       "rr": 1.5,
-      "pnl": 150.0,
+      "pnl": 150,
       "journal": "Failed breakout fade.",
       "status": "closed",
       "createdAt": "2025-08-06T14:00:00Z",
@@ -163,16 +178,18 @@
       "broker": "binance",
       "direction": "long",
       "entryPrice": 3420.5,
-      "takeProfit": 3485.0,
-      "stopLoss": 3390.0,
+      "takeProfit": 3485,
+      "stopLoss": 3390,
       "riskPercent": 1,
       "riskAmount": 40,
       "lotSize": 0.5,
       "tradedPips": 6450,
       "session": "NY",
-      "strategyIds": ["s-fvg"],
-      "rr": 2.0,
-      "pnl": 80.0,
+      "strategyIds": [
+        "s-fvg"
+      ],
+      "rr": 2,
+      "pnl": 80,
       "journal": "Impulse leg continuation.",
       "status": "closed",
       "createdAt": "2025-08-07T16:30:00Z",
@@ -185,17 +202,19 @@
       "assetPair": "US30",
       "broker": "icmarkets",
       "direction": "long",
-      "entryPrice": 41520.0,
-      "takeProfit": 41680.0,
-      "stopLoss": 41460.0,
+      "entryPrice": 41520,
+      "takeProfit": 41680,
+      "stopLoss": 41460,
       "riskPercent": 0.5,
       "riskAmount": 25,
       "lotSize": 0.5,
       "tradedPips": 160,
       "session": "NY",
-      "strategyIds": ["s-fvg"],
-      "rr": 2.0,
-      "pnl": 100.0,
+      "strategyIds": [
+        "s-fvg"
+      ],
+      "rr": 2,
+      "pnl": 100,
       "journal": "NY open drive up.",
       "status": "closed",
       "createdAt": "2025-08-08T13:35:00Z",
@@ -208,17 +227,19 @@
       "assetPair": "NAS100",
       "broker": "pepperstone",
       "direction": "short",
-      "entryPrice": 18540.0,
-      "takeProfit": 18460.0,
-      "stopLoss": 18585.0,
+      "entryPrice": 18540,
+      "takeProfit": 18460,
+      "stopLoss": 18585,
       "riskPercent": 0.7,
       "riskAmount": 35,
       "lotSize": 0.4,
       "tradedPips": 80,
       "session": "NY",
-      "strategyIds": ["s-bos"],
+      "strategyIds": [
+        "s-bos"
+      ],
       "rr": 1.6,
-      "pnl": 56.0,
+      "pnl": 56,
       "journal": "Rejection at previous day high.",
       "status": "closed",
       "createdAt": "2025-08-09T15:10:00Z",
@@ -232,16 +253,18 @@
       "broker": "oanda",
       "direction": "long",
       "entryPrice": 5412.5,
-      "takeProfit": 5430.0,
-      "stopLoss": 5404.0,
+      "takeProfit": 5430,
+      "stopLoss": 5404,
       "riskPercent": 0.6,
       "riskAmount": 30,
       "lotSize": 0.6,
       "tradedPips": 17.5,
       "session": "NY",
-      "strategyIds": ["s-fvg"],
+      "strategyIds": [
+        "s-fvg"
+      ],
       "rr": 2.3,
-      "pnl": 69.0,
+      "pnl": 69,
       "journal": "Intraday trend continuation.",
       "status": "closed",
       "createdAt": "2025-08-11T14:00:00Z",
@@ -262,9 +285,11 @@
       "lotSize": 0.3,
       "tradedPips": 20,
       "session": "LDN",
-      "strategyIds": ["s-bos"],
+      "strategyIds": [
+        "s-bos"
+      ],
       "rr": 1.7,
-      "pnl": 51.0,
+      "pnl": 51,
       "journal": "Lower high rejection.",
       "status": "closed",
       "createdAt": "2025-08-12T09:45:00Z",
@@ -285,9 +310,11 @@
       "lotSize": 0.4,
       "tradedPips": 28,
       "session": "TKO",
-      "strategyIds": ["s-fvg"],
-      "rr": 2.0,
-      "pnl": 56.0,
+      "strategyIds": [
+        "s-fvg"
+      ],
+      "rr": 2,
+      "pnl": 56,
       "journal": "Demand zone bounce.",
       "status": "closed",
       "createdAt": "2025-08-13T02:30:00Z",
@@ -308,9 +335,11 @@
       "lotSize": 0.3,
       "tradedPips": 30,
       "session": "NY",
-      "strategyIds": ["s-bos"],
-      "rr": 2.0,
-      "pnl": 60.0,
+      "strategyIds": [
+        "s-bos"
+      ],
+      "rr": 2,
+      "pnl": 60,
       "journal": "Break of structure and retest.",
       "status": "closed",
       "createdAt": "2025-08-14T13:15:00Z",
@@ -331,9 +360,11 @@
       "lotSize": 0.3,
       "tradedPips": 28,
       "session": "TKO",
-      "strategyIds": ["s-fvg"],
-      "rr": 2.0,
-      "pnl": 42.0,
+      "strategyIds": [
+        "s-fvg"
+      ],
+      "rr": 2,
+      "pnl": 42,
       "journal": "Asian session pullback entry.",
       "status": "closed",
       "createdAt": "2025-08-15T01:10:00Z",
@@ -354,7 +385,9 @@
       "lotSize": 0.25,
       "tradedPips": 50,
       "session": "LDN",
-      "strategyIds": ["s-bos"],
+      "strategyIds": [
+        "s-bos"
+      ],
       "rr": 1.7,
       "pnl": 112.5,
       "journal": "Rejection from H4 supply.",
@@ -377,9 +410,11 @@
       "lotSize": 0.2,
       "tradedPips": 75,
       "session": "LDN",
-      "strategyIds": ["s-fvg"],
+      "strategyIds": [
+        "s-fvg"
+      ],
       "rr": 1.7,
-      "pnl": 150.0,
+      "pnl": 150,
       "journal": "Momentum continuation after BOS.",
       "status": "closed",
       "createdAt": "2025-08-19T09:00:00Z",
@@ -397,10 +432,12 @@
       "stopLoss": 29.62,
       "riskPercent": 1,
       "riskAmount": 20,
-      "lotSize": 1.0,
+      "lotSize": 1,
       "tradedPips": 350,
       "session": "NY",
-      "strategyIds": ["s-bos"],
+      "strategyIds": [
+        "s-bos"
+      ],
       "rr": 2.1,
       "pnl": 73.5,
       "journal": "Mean reversion to VWAP.",
@@ -423,9 +460,11 @@
       "lotSize": 0.8,
       "tradedPips": 90,
       "session": "NY",
-      "strategyIds": ["s-fvg"],
+      "strategyIds": [
+        "s-fvg"
+      ],
       "rr": 2.3,
-      "pnl": 72.0,
+      "pnl": 72,
       "journal": "EIA pre-move push.",
       "status": "closed",
       "createdAt": "2025-08-21T16:00:00Z",
@@ -438,17 +477,19 @@
       "assetPair": "GER30",
       "broker": "icmarkets",
       "direction": "short",
-      "entryPrice": 18450.0,
-      "takeProfit": 18370.0,
-      "stopLoss": 18490.0,
+      "entryPrice": 18450,
+      "takeProfit": 18370,
+      "stopLoss": 18490,
       "riskPercent": 0.7,
       "riskAmount": 21,
       "lotSize": 0.3,
       "tradedPips": 80,
       "session": "LDN",
-      "strategyIds": ["s-bos"],
-      "rr": 2.0,
-      "pnl": 48.0,
+      "strategyIds": [
+        "s-bos"
+      ],
+      "rr": 2,
+      "pnl": 48,
       "journal": "Gap fill fade.",
       "status": "closed",
       "createdAt": "2025-08-22T07:50:00Z",
@@ -461,17 +502,19 @@
       "assetPair": "UK100",
       "broker": "pepperstone",
       "direction": "long",
-      "entryPrice": 8380.0,
-      "takeProfit": 8420.0,
-      "stopLoss": 8360.0,
+      "entryPrice": 8380,
+      "takeProfit": 8420,
+      "stopLoss": 8360,
       "riskPercent": 0.8,
       "riskAmount": 24,
       "lotSize": 0.4,
       "tradedPips": 40,
       "session": "LDN",
-      "strategyIds": ["s-fvg"],
-      "rr": 2.0,
-      "pnl": 64.0,
+      "strategyIds": [
+        "s-fvg"
+      ],
+      "rr": 2,
+      "pnl": 64,
       "journal": "Bull flag breakout.",
       "status": "closed",
       "createdAt": "2025-08-25T08:15:00Z",
@@ -484,15 +527,17 @@
       "assetPair": "JP225",
       "broker": "exness",
       "direction": "long",
-      "entryPrice": 40650.0,
-      "takeProfit": 40780.0,
-      "stopLoss": 40590.0,
+      "entryPrice": 40650,
+      "takeProfit": 40780,
+      "stopLoss": 40590,
       "riskPercent": 0.6,
       "riskAmount": 18,
       "lotSize": 0.25,
       "tradedPips": 130,
       "session": "TKO",
-      "strategyIds": ["s-fvg"],
+      "strategyIds": [
+        "s-fvg"
+      ],
       "rr": 2.2,
       "pnl": 72.5,
       "journal": "Tokyo trend follow.",
@@ -515,8 +560,10 @@
       "lotSize": 0.08,
       "tradedPips": 127,
       "session": "NY",
-      "strategyIds": ["s-bos"],
-      "rr": 2.0,
+      "strategyIds": [
+        "s-bos"
+      ],
+      "rr": 2,
       "pnl": 160.8,
       "journal": "NY reversal from 4H supply.",
       "status": "closed",
@@ -538,9 +585,12 @@
       "lotSize": 0.3,
       "tradedPips": 35,
       "session": "LDN",
-      "strategyIds": ["s-fvg", "s-bos"],
+      "strategyIds": [
+        "s-fvg",
+        "s-bos"
+      ],
       "rr": 2.3,
-      "pnl": 105.0,
+      "pnl": 105,
       "journal": "BOS + FVG confluence.",
       "status": "closed",
       "createdAt": "2025-08-29T09:20:00Z",
@@ -1058,8 +1108,16 @@
         "Wait for mitigation",
         "Confirm with order flow"
       ],
-      "timeframes": ["M5", "M15", "H1"],
-      "tags": ["ICT", "price-action", "mean-reversion"]
+      "timeframes": [
+        "M5",
+        "M15",
+        "H1"
+      ],
+      "tags": [
+        "ICT",
+        "price-action",
+        "mean-reversion"
+      ]
     },
     {
       "id": "s-bos",
@@ -1071,8 +1129,15 @@
         "Wait for close beyond swing",
         "Retest entry"
       ],
-      "timeframes": ["M15", "H1", "H4"],
-      "tags": ["ICT", "trend-continuation"]
+      "timeframes": [
+        "M15",
+        "H1",
+        "H4"
+      ],
+      "tags": [
+        "ICT",
+        "trend-continuation"
+      ]
     },
     {
       "id": "s-ob",
@@ -1084,8 +1149,15 @@
         "Strong displacement",
         "Mitigation entry"
       ],
-      "timeframes": ["M5", "M15", "H1"],
-      "tags": ["ICT", "S&D"]
+      "timeframes": [
+        "M5",
+        "M15",
+        "H1"
+      ],
+      "tags": [
+        "ICT",
+        "S&D"
+      ]
     },
     {
       "id": "s-br",
@@ -1098,8 +1170,14 @@
         "Retest hold",
         "Trigger"
       ],
-      "timeframes": ["M15", "H1"],
-      "tags": ["classical", "trend"]
+      "timeframes": [
+        "M15",
+        "H1"
+      ],
+      "tags": [
+        "classical",
+        "trend"
+      ]
     }
   ]
 }

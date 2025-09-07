@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import MainLayout from "../layouts/MainLayout";
-import { apiGet } from "../lib/api";
+import { apiGet, apiDelete } from "../lib/api";
 import useAuth from "../stores/auth";
 import useRiskCalculatorStore from "../stores/RiskCalculatorStore";
 import { CiFilter } from "react-icons/ci";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
+import { IoIosAdd } from "react-icons/io";
+import { Link } from "react-router-dom";
+import { MdDeleteForever } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const TradeJournal = () => {
   const allAssets = useRiskCalculatorStore((state) => state.allAssets);
@@ -23,11 +28,14 @@ const TradeJournal = () => {
   const [RRFilter, setRRFilter] = useState("");
   const [RRValueFilter, setRRValueFilter] = useState("");
   const [strategyFilter, setStrategyFilter] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTrade = async () => {
       const res = await apiGet("Trades");
-      const Trades = res.filter((eachTrades) => eachTrades.userId === user.id);
+      const Trades = res
+        .filter((eachTrades) => eachTrades.userId === user.id)
+        .reverse();
       setUserTrades(Trades);
       setFilteredTrades(Trades);
     };
@@ -99,6 +107,15 @@ const TradeJournal = () => {
           <p className="text-sm text-brand-green/50 mb-4">
             Plan, execute, and review, without tab jungle
           </p>
+          <div className="flex justify-end pr-[5dvw] mb-2">
+            <Link
+              to={"/new-trade"}
+              className=" cursor-pointer text-main-Background min-w-fit w-[20dvw] bg-brand-green rounded-xl flex justify-center items-center p-2 px-4"
+            >
+              <IoIosAdd size={20} />
+              <p>New Trade</p>
+            </Link>
+          </div>
           <div className="p-3 bg-secondary-Background mb-3 rounded-xl">
             <div
               onClick={() => setShowFilters((Prev) => !Prev)}
@@ -385,7 +402,27 @@ const TradeJournal = () => {
                       {eachUserTrade.broker}
                     </td>
                     <td className="text-center px-2 border-r border-main-border">
-                      Actions
+                      <div className="flex gap-2 justify-center">
+                        <MdDeleteForever
+                          size={20}
+                          className="text-red-500/70 cursor-pointer"
+                          onClick={async () => {
+                            await apiDelete(`/Trades/${eachUserTrade.id}`);
+                            setFilteredTrades((prev) =>
+                              prev.filter(
+                                (trade) => trade.id !== eachUserTrade.id
+                              )
+                            );
+                          }}
+                        />
+                        <FaEdit
+                          size={20}
+                          className="text-brand-green cursor-pointer"
+                          onClick={() =>
+                            navigate(`/edit-trade/${eachUserTrade.id}`)
+                          }
+                        />
+                      </div>
                     </td>
                   </tr>
                 ))}

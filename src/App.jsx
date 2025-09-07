@@ -68,7 +68,7 @@ function App() {
           }
         />
         <Route
-          path="/edit-trade"
+          path="/edit-trade/:id"
           element={
             <RequireAuth>
               <EditTrade />

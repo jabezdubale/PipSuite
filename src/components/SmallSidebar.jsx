@@ -99,9 +99,15 @@ const SmallSidebar = ({ styles }) => {
       </div>
       <div className="flex flex-col justify-end items-center w-full gap-5">
         <div className=" cursor-pointer w-[95%] py-3 px-1 bg-main-Background rounded-lg flex justify-center items-center ">
-          <div className="text-main-Background w-[90%] py-2 bg-brand-green rounded-lg flex justify-center items-center ">
+          <Link
+            to={"/new-trade"}
+            onClick={() => {
+              setSelectedSidebar("");
+            }}
+            className="text-main-Background w-[90%] py-2 bg-brand-green rounded-lg flex justify-center items-center "
+          >
             <IoIosAdd size={20} />
-          </div>
+          </Link>
         </div>
         <div
           onClick={() => {

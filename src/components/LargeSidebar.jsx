@@ -108,10 +108,16 @@ const LargeSidebar = ({ styles }) => {
       <div className="flex flex-col justify-end items-center w-full gap-2">
         <div className="w-[95%] flex flex-col justify-center items-center gap-2 py-3 px-4 bg-main-Background rounded-lg">
           <p className="w-full">Quick Actions</p>
-          <div className=" cursor-pointer text-main-Background w-full bg-brand-green rounded-lg flex justify-center items-center p-2">
+          <Link
+            to={"/new-trade"}
+            onClick={() => {
+              setSelectedSidebar("");
+            }}
+            className=" cursor-pointer text-main-Background w-full bg-brand-green rounded-lg flex justify-center items-center p-2"
+          >
             <IoIosAdd size={20} />
             <p>New Trade</p>
-          </div>
+          </Link>
         </div>
         <div
           onClick={() => {
